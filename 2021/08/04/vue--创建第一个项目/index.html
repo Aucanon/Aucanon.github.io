@@ -1,0 +1,47 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>Vue--创建第一个项目</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/head.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
+
+前言vue作为前端三大框架之一，对于前端开发非常重要。
+
+
+
+
+一、vue是什么？Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+二、使用步骤1.创建一个vue项目可以通过vue CLIvue create 进行创建
+vue create hello-word
+
+也可以通过图形化界面创建
+vue ui
+
+会进入一个浏览器窗口，可以再窗口中进行项目的创建、配置等。
+2.项目的运行在终端中输入命令
+如果是使用yarn使用
+yarn s.."><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Vue--创建第一个项目</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81vue%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">一、vue是什么？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="toc-text">二、使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAvue%E9%A1%B9%E7%9B%AE"><span class="toc-text">1.创建一个vue项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%A1%B9%E7%9B%AE%E7%9A%84%E8%BF%90%E8%A1%8C"><span class="toc-text">2.项目的运行</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Vue--创建第一个项目</h1><time class="has-text-grey" datetime="2021-08-03T16:00:00.000Z">2021-08-04</time><article class="mt-2 post-content"><hr style=" border:solid; width:100px; height:1px;" color="#000000" size="1&quot;">
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><font color="#999AAA">vue作为前端三大框架之一，对于前端开发非常重要。</font></p>
+<hr style=" border:solid; width:100px; height:1px;" color="#000000" size="1&quot;">
+
+
+
+<h1 id="一、vue是什么？"><a href="#一、vue是什么？" class="headerlink" title="一、vue是什么？"></a>一、vue是什么？</h1><p><font color="#999AAA">Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</font></p><font color="#999AAA">
+<h1 id="二、使用步骤"><a href="#二、使用步骤" class="headerlink" title="二、使用步骤"></a>二、使用步骤</h1><h2 id="1-创建一个vue项目"><a href="#1-创建一个vue项目" class="headerlink" title="1.创建一个vue项目"></a>1.创建一个vue项目</h2><p><font color="#999AAA">可以通过vue CLI<br>vue create 进行创建</font></p><font color="#999AAA">
+<pre><code class="powershell">vue create hello-word
+</code></pre>
+<p>也可以通过图形化界面创建</p>
+<pre><code class="powershell">vue ui
+</code></pre>
+<p>会进入一个浏览器窗口，可以再窗口中进行项目的创建、配置等。<br><img src="https://img-blog.csdnimg.cn/20210416150312629.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MTUyNDczNw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="2-项目的运行"><a href="#2-项目的运行" class="headerlink" title="2.项目的运行"></a>2.项目的运行</h2><p><font color="#999AAA">在终端中输入命令</font></p><font color="#999AAA">
+<p>如果是使用yarn使用</p>
+<pre><code class="powershell">yarn serve
+</code></pre>
+<p>使用npm就是</p>
+<pre><code class="powershell">npm serve
+</code></pre>
+<p>项目运行起来就可以在终端打开<br><img src="https://img-blog.csdnimg.cn/20210416150936956.png" alt="在这里插入图片描述"><br>点开URL就看到<br><img src="https://img-blog.csdnimg.cn/20210416151141332.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MTUyNDczNw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<hr style=" border:solid; width:100px; height:1px;" color="#000000" size="1&quot;">
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><font color="#999AAA">从头开始，这就是第一个vue项目。</font></p><font color="#999AAA">
+</font></font></font></font></article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2021/08/04/Vue%E4%B9%8Bv-%E6%8C%87%E4%BB%A4/" title="Vue--v-指令"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Vue--v-指令</span></a><a class="button is-default" href="/2021/07/11/Vue--%E2%80%98el%E2%80%98%E6%8C%82%E8%BD%BD/" title="Vue--'el'"><span class="has-text-weight-semibold">Next: Vue--'el'</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Aucanon/Aucanon.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Aucanon"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><a title="rss" target="_blank" rel="noopener nofollow" href="/atom.xml"><i class="iconfont icon-rss"></i></a><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Aucanon 2022</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p class="is-flex is-justify-content-center"></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/Aucanon/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
