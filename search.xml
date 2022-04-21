@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Git的常用方法和命令</title>
+      <link href="/2022/04/21/Git%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E5%92%8C%E5%91%BD%E4%BB%A4/"/>
+      <url>/2022/04/21/Git%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E5%92%8C%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h2 id="gitignore文件"><a href="#gitignore文件" class="headerlink" title=".gitignore文件"></a>.gitignore文件</h2><pre><code class="bash">1.#忽略所有.a文件*.a2.#跟踪index.html（即使前面用*.html忽略了所有html文件）!index.html3.#忽略当前目录下的index.css文件/index.css4.#忽略任何目录下名为index.html的文件夹index.html/5.#忽略 lib/1.txt(但不忽略 lib/dir/1.txt)lib/*.txt6.#忽略 doc/目录及其所有子目录下的.docx文件doc/**/*.docx</code></pre><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>查看分支</p><pre><code class="bash">git branch</code></pre><p>基于当前分支创建 一个新分支</p><pre><code class="bash">git branch 分支名</code></pre><p>切换到某一分支上</p><pre><code class="bash">git checkout 分支名</code></pre><p>创建，并切换到新的分支上</p><pre><code class="bash">git checkout -b</code></pre><p>将分支合并到master</p><pre><code class="bash">git merge 分支名</code></pre><p>删除分支</p><pre><code class="bash">git branch -d 分支名</code></pre><h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><p>查看远程仓库中所有分值列表信息</p><pre><code class="bash">git remote show</code></pre><p>从远程仓库把对应的远程分支下载到本地仓库，并把下载的本地分支进行重命名</p><pre><code class="bash">git checkout -b 本地分支名称 远程仓库名称/远程分支名称</code></pre><p>从远程仓库拉取当前分支最新的代码</p><pre><code class="bash">git pull</code></pre><p>删除远程仓库中指定名称的分支</p><pre><code class="bash">git push 远程仓库名 --delete 远程分支名</code></pre><p>移除仓库中的文件 但保留工作区的该文件</p><pre><code class="bash">git rm --cached 文件名</code></pre><p>同时移除工作区和仓库内的文件</p><pre><code class="bash">git rm -f 文件名</code></pre><p>从远程仓库克隆到本地</p><pre><code class="bash">git clone "url"</code></pre><h2 id="回滚"><a href="#回滚" class="headerlink" title="回滚"></a>回滚</h2><p>撤销修改</p><pre><code class="bash">git checkout --文件名</code></pre><p>从暂存区内移除</p><pre><code class="bash">git reset HEAD 要移除的文件名或者全部（.</code></pre><p>查看最近两次提交记录</p><pre><code class="bash">git log -2</code></pre><p>在一行上显示提交历史</p><pre><code class="bash">git log --pretty=oneline</code></pre><p>回退到某一ID的版本</p><pre><code class="bash">git reset --hard &lt;CommitID&gt;</code></pre><p>在旧版本中使用<code>git log --pretty=oneline</code>命令 查看命令操作的历史</p><pre><code class="bash">git reflog --pretty=oneline</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Git的基本使用方法和命令</title>
       <link href="/2022/04/20/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%92%8C%E5%91%BD%E4%BB%A4/"/>
       <url>/2022/04/20/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%92%8C%E5%91%BD%E4%BB%A4/</url>
