@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>Vue核心--MVVM模型</title>
+      <link href="/2022/05/30/Vue%E6%A0%B8%E5%BF%83--MVVM%E6%A8%A1%E5%9E%8B/"/>
+      <url>/2022/05/30/Vue%E6%A0%B8%E5%BF%83--MVVM%E6%A8%A1%E5%9E%8B/</url>
+      
+        <content type="html"><![CDATA[<p>﻿</p><h2 id="MVVM模式"><a href="#MVVM模式" class="headerlink" title="MVVM模式"></a>MVVM模式</h2><p>MVVM 是Model-View-ViewModel 的缩写</p><h4 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h4><p>模型是指代表真实状态内容的领域模型（面向对象），或指代表内容的数据访问层（以数据为中心）。</p><h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><blockquote><p>就像在MVC和MVP模式中一样，视图是用户在屏幕上看到的结构、布局和外观（UI）。</p></blockquote><h4 id="视图模型"><a href="#视图模型" class="headerlink" title="视图模型"></a>视图模型</h4><blockquote><p>视图模型是暴露公共属性和命令的视图的抽象。MVVM没有MVC模式的控制器，也没有MVP模式的presenter，有的是一个绑定器。在视图模型中，绑定器在视图和数据绑定器之间进行通信。</p></blockquote><h4 id="绑定器"><a href="#绑定器" class="headerlink" title="绑定器"></a>绑定器</h4><blockquote><p>声明性数据和命令绑定隐含在MVVM模式中。在Microsoft解决方案堆中，绑定器是一种名为XAML的标记语言。 绑定器使开发人员免于被迫编写样板式逻辑来同步视图模型和视图。在微软的堆之外实现时，声明性数据绑定技术的出现是实现该模式的一个关键因素。</p></blockquote><p><img src="https://img-blog.csdnimg.cn/362ff34a7ec747c483163370345d9ef4.png#pic_center" alt="在这里插入图片描述"></p><ul><li>M：模型(Model) ：对应 data 中的数据</li><li>V：视图(View) ：模板</li><li>VM：视图模型(ViewModel) ： Vue 实例对象</li></ul><p>代码中：<br><img src="https://img-blog.csdnimg.cn/23db67de76cb45218247deede085d7d9.png#pic_center" alt="在这里插入图片描述"><br>在MVVM的架构下，View层和Model层并没有直接联系，而是通过ViewModel层进行交互。ViewModel层通过双向数据绑定将View层和Model层连接了起来，使得View层和Model层的同步工作完全是自动的。因此开发者只需关注业务逻辑，无需手动操作DOM，复杂的数据状态维护交给MVVM统一来管理。</p><p>在Vue中对数据（Model）进行劫持，当数据变动时，数据会出发劫持时绑定的方法，对视图进行更新。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vue核心--Vue简介、脚手架</title>
+      <link href="/2022/05/30/Vue%E6%A0%B8%E5%BF%83--Vue%E7%AE%80%E4%BB%8B%E3%80%81%E8%84%9A%E6%89%8B%E6%9E%B6/"/>
+      <url>/2022/05/30/Vue%E6%A0%B8%E5%BF%83--Vue%E7%AE%80%E4%BB%8B%E3%80%81%E8%84%9A%E6%89%8B%E6%9E%B6/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Vue就是一套用于构建用户界面的渐进式框架。具体介绍可以看下Vue官方的介绍 - <a href="https://cn.vuejs.org/v2/guide/">Vue.js</a></p><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul><li><p>采用组件化模式，提高代码复用率、且让代码更好维护</p></li><li><p>声明式编码，让编码人员无需直接操作DOM，提高开发效率</p></li><li><p>使用虚拟DOM+优秀的Diff算法，尽量复用DOM节点</p><h2 id="创建Vue-脚手架"><a href="#创建Vue-脚手架" class="headerlink" title="创建Vue(脚手架)"></a>创建Vue(脚手架)</h2><h4 id="脚手架创建"><a href="#脚手架创建" class="headerlink" title="脚手架创建"></a>脚手架创建</h4><pre><code class="javascript">vue create xxx </code></pre><p><img src="https://img-blog.csdnimg.cn/fa17380bc12241b58bdc815a70e242b8.png#pic_center" alt="在这里插入图片描述"><br>创建后在项目目录下通过<code>yarn serve</code>或<code>npm run serve</code>运行</p><h4 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h4><p><img src="https://img-blog.csdnimg.cn/03737265ea554cd3b2c0cc2a4932ba14.png#pic_center" alt="在这里插入图片描述"></p></li><li><p><code>favicon.ico</code>: 页签图标</p></li><li><p><code>index.htm</code>l: 主页面</p></li><li><p><code>assets</code>: 存放静态资源</p></li><li><p><code>component</code>: 存放组件</p></li><li><p><code>App.vue</code>: 汇总所有组件</p></li><li><p><code>main.js</code>: 入口文件</p></li><li><p><code>.gitignore</code>: git版本管制忽略的配置</p></li><li><p><code>babel.config.js</code>: babel的配置文件</p></li><li><p><code>jsconfig.json</code>: 指定了JavaScript 语言服务提供的功能的根文件和选项</p></li><li><p><code>package.json</code>: 应用包配置文件 </p></li><li><p><code>README.md</code>: 应用描述文件</p></li><li><p><code>yarn.lock</code>: 和package-lock.json文件相同作用：包版本控制文件</p></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpeechSynthesisUtterance语音播报的使用text-reader（HTML+CSS+Js）</title>
       <link href="/2022/04/24/SpeechSynthesisUtterance%E8%AF%AD%E9%9F%B3%E6%92%AD%E6%8A%A5%E7%9A%84%E4%BD%BF%E7%94%A8text-reader%EF%BC%88HTML+CSS+Js%EF%BC%89/"/>
       <url>/2022/04/24/SpeechSynthesisUtterance%E8%AF%AD%E9%9F%B3%E6%92%AD%E6%8A%A5%E7%9A%84%E4%BD%BF%E7%94%A8text-reader%EF%BC%88HTML+CSS+Js%EF%BC%89/</url>
