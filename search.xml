@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Vuex组件间通信</title>
+      <link href="/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/"/>
+      <url>/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/</url>
+      
+        <content type="html"><![CDATA[<h4 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h4><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式 + 库。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p><ul><li><p>状态，驱动应用的数据源；</p></li><li><p>视图，以声明方式将状态映射到视图；</p></li><li><p>操作，响应在视图上的用户输入导致的状态变化。<br><img src="https://img-blog.csdnimg.cn/892e8370113c4e11b4de93f920052335.png" alt="请添加图片描述"><br>但是，当我们的应用遇到多个组件共享状态时，单向数据流的简洁性很容易被破坏：</p></li><li><p>多个视图依赖于同一状态。</p></li><li><p>来自不同视图的行为需要变更同一状态。<br><img src="https://img-blog.csdnimg.cn/c056f7b2ba5b4c09ab2507c70081a838.png" alt="请添加图片描述"></p></li></ul><p>Vuex可以适用于多个组件之间共享数据</p><h4 id="安装Vuex"><a href="#安装Vuex" class="headerlink" title="安装Vuex"></a>安装Vuex</h4><blockquote><p><code>npm install vuex@next --save</code></p></blockquote><h4 id="搭建Vuex环境："><a href="#搭建Vuex环境：" class="headerlink" title="搭建Vuex环境："></a>搭建Vuex环境：</h4><p>创建文件<code>src/store/inde.js</code></p><pre><code class="javascript">//引入Vue核心库import Vue from 'vue'//引入Vueximport Vuex from 'vuex'//应用Vuex插件Vue.use(Vuex)//准备actions对象——响应组件中用户的动作const actions = {}//准备mutations对象——修改state中的数据const mutations = {}//准备state对象——保存具体的数据const state = {}//创建并暴露storeexport default new Vuex.Store({    actions,    mutations,    state})</code></pre><p>在入口文件<code>mian.js</code>添加配置项：</p><pre><code class="javascript">......//引入storeimport store from './store'......//创建vmnew Vue({    el:'#app',    render: h =&gt; h(App),    store})</code></pre><blockquote><p><code>state</code>:初始化存储数据</p></blockquote><blockquote><p><code>getters</code>:Vuex 允许我们在 store 中定义“getters”（可以认为是 store 的计算属性）。</p></blockquote><blockquote><p><code>mutation</code>:唯一更改state数据状态的方法就是提交mutation，并且它会接受 state 作为第一个参数。</p></blockquote><blockquote><p><code>action </code>:action 提交的是 mutation，而不是直接变更状态,并且action 可以进行异步操作。</p></blockquote><p>组件中进行读取数据：<code>$store.state.data</code></p><p>组件中修改vuex中的数据：<code>$store.dispatch('action中的方法名',data)</code></p><h4 id="map方法"><a href="#map方法" class="headerlink" title="map方法"></a>map方法</h4><blockquote><p><code>mapState</code>：将state中的数据映射为计算属性。</p></blockquote><pre><code class="javascript">computed: {    //借助mapState生成计算属性：sum、school、subject（对象写法）     ...mapState({sum:'sum',school:'school'}),             //借助mapState生成计算属性：sum、school、subject（数组写法）    ...mapState(['sum','school']),},</code></pre><blockquote><p><code>mapGetters</code>：将getters中的数据映射为计算属性。</p></blockquote><pre><code class="javascript">computed: {    //借助mapGetters生成计算属性：getSum（对象写法）    ...mapGetters({getSum:'getSum'}),    //借助mapGetters生成计算属性：getSum（数组写法）    ...mapGetters(['getSum'])},</code></pre><blockquote><p><code>mapAction</code>：将action中的数据映射为计算属性。</p></blockquote><pre><code class="javascript">methods:{    //靠mapActions生成：incrementOdd、incrementWait（对象形式）    ...mapActions({incrementOdd:'jiaOdd',incrementWait:'jiaWait'})    //靠mapActions生成：incrementOdd、incrementWait（数组形式）    ...mapActions(['jiaOdd','jiaWait'])}</code></pre><blockquote><p><code>mapMutation</code>：将mutation中的数据映射为计算属性。</p></blockquote><pre><code class="javascript">methods:{    //靠mapActions生成：increment、decrement（对象形式）    ...mapMutations({increment:'JIA',decrement:'JIAN'}),        //靠mapMutations生成：JIA、JIAN（对象形式）    ...mapMutations(['JIA','JIAN']),}</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue核心--mixin混入</title>
       <link href="/2022/06/02/Vue%E6%A0%B8%E5%BF%83--mixin%E6%B7%B7%E5%85%A5/"/>
       <url>/2022/06/02/Vue%E6%A0%B8%E5%BF%83--mixin%E6%B7%B7%E5%85%A5/</url>
