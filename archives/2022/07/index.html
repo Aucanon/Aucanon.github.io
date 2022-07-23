@@ -22,7 +22,38 @@ npm install vuex@next --save
 //引入Vue核心库
 import Vue from 'vue'
 //引入Vuex
-import Vuex..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/">Read more</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">1</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+import Vuex..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/23/Vue%E6%8F%92%E6%A7%BD/">Vue插槽</a></h2><time class="has-text-grey" datetime="2022-07-22T16:00:00.000Z">2022-07-23</time><p class="is-flex-grow-2 mt-2">插槽用于父子组件之间的通信（一般是结构，即标签）
+可放置在函数参数位置的 JavaScript 表达式 (在支持的环境下可使用解构)。可选，即只需要在为插槽传入 prop 的时候使用。
+
+父组件向子组件指定位置插入html结构（默认插槽、具名插槽），或者子组件给父组件传递数据，父组件决定插入子组件对应位置的结构（作用域插槽）
+
+默认插槽&amp;lt;template&amp;gt;
+    &amp;lt;div&amp;gt;
+        &amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+    export default {
+        name:'',
+    }
+&amp;lt;/script&amp;gt;
+
+&amp;lt;style&amp;..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/23/Vue%E6%8F%92%E6%A7%BD/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/23/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/">Vue组件间通信</a></h2><time class="has-text-grey" datetime="2022-07-22T16:00:00.000Z">2022-07-23</time><p class="is-flex-grow-2 mt-2"> 组件间通信
+props用于父组件给子组件传值
+
+所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外变更父级组件的状态，从而导致你的应用的数据流向难以理解。额外的，每次父级组件发生变更时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。
+
+props接收时有三种形式：
+
+默认接收：prop:['name']
+限制类型接收：props:{name:String}
+限制类型、必要性、指定默认值：
+
+props:{
+    name:{
+        type:String,
+        required..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/23/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/">Read more</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">1</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')

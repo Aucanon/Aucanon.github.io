@@ -22,7 +22,38 @@ npm install vuex@next --save
 //引入Vue核心库
 import Vue from 'vue'
 //引入Vuex
-import Vuex..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/06/02/Vue%E6%A0%B8%E5%BF%83--mixin%E6%B7%B7%E5%85%A5/">Vue核心--mixin混入</a></h2><time class="has-text-grey" datetime="2022-06-01T16:00:00.000Z">2022-06-02</time><p class="is-flex-grow-2 mt-2">﻿&amp;gt;混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本身的选项。
+import Vuex..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/23/Vue%E6%8F%92%E6%A7%BD/">Vue插槽</a></h2><time class="has-text-grey" datetime="2022-07-22T16:00:00.000Z">2022-07-23</time><p class="is-flex-grow-2 mt-2">插槽用于父子组件之间的通信（一般是结构，即标签）
+可放置在函数参数位置的 JavaScript 表达式 (在支持的环境下可使用解构)。可选，即只需要在为插槽传入 prop 的时候使用。
+
+父组件向子组件指定位置插入html结构（默认插槽、具名插槽），或者子组件给父组件传递数据，父组件决定插入子组件对应位置的结构（作用域插槽）
+
+默认插槽&amp;lt;template&amp;gt;
+    &amp;lt;div&amp;gt;
+        &amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+    export default {
+        name:'',
+    }
+&amp;lt;/script&amp;gt;
+
+&amp;lt;style&amp;..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/23/Vue%E6%8F%92%E6%A7%BD/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/23/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/">Vue组件间通信</a></h2><time class="has-text-grey" datetime="2022-07-22T16:00:00.000Z">2022-07-23</time><p class="is-flex-grow-2 mt-2"> 组件间通信
+props用于父组件给子组件传值
+
+所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外变更父级组件的状态，从而导致你的应用的数据流向难以理解。额外的，每次父级组件发生变更时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。
+
+props接收时有三种形式：
+
+默认接收：prop:['name']
+限制类型接收：props:{name:String}
+限制类型、必要性、指定默认值：
+
+props:{
+    name:{
+        type:String,
+        required..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/23/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/06/02/Vue%E6%A0%B8%E5%BF%83--mixin%E6%B7%B7%E5%85%A5/">Vue核心--mixin混入</a></h2><time class="has-text-grey" datetime="2022-06-01T16:00:00.000Z">2022-06-02</time><p class="is-flex-grow-2 mt-2">﻿&amp;gt;混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本身的选项。
 
 全局注册一个混入，影响注册之后所有创建的每个 Vue 实例。插件作者可以使用混入，向组件注入自定义的行为。不推荐在应用代码中使用。
 
@@ -34,40 +65,7 @@ export const mix = {
         }
     },
     mounted() {
-        console.log('hel..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/06/02/Vue%E6%A0%B8%E5%BF%83--mixin%E6%B7%B7%E5%85%A5/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--filter%E8%BF%87%E6%BB%A4%E5%99%A8/">Vue核心--filter过滤器</a></h2><time class="has-text-grey" datetime="2022-05-31T16:00:00.000Z">2022-06-01</time><p class="is-flex-grow-2 mt-2">Vue.js 允许你自定义过滤器，可被用于一些常见的文本格式化。过滤器可以用在两个地方：双花括号插值和 v-bind 表达式 (后者从 2.1.0+ 开始支持)。过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符号|指示
-
-功能：对要显示的数据进行特定格式化后再显示。
-
-
-过滤器也可以接收额外参数、多个过滤器也可以串联。
-
-
-注意：并没有改变原本的数据, 是产生新的对应的数据。
-
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html&amp;gt;
-    &amp;lt;head&amp;gt;
-        &amp;lt;meta charset=&quot;UTF-8&quot; /&amp;gt;
-        &amp;lt;title&amp;gt;过滤器&amp;lt;/title&amp;gt;
-        &amp;lt;script type=&quot;te..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--filter%E8%BF%87%E6%BB%A4%E5%99%A8/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E3%80%81%E7%9B%91%E4%BA%8B%E5%B1%9E%E6%80%A7/">Vue核心--计算属性、监事属性</a></h2><time class="has-text-grey" datetime="2022-05-31T16:00:00.000Z">2022-06-01</time><p class="is-flex-grow-2 mt-2">计算属性computed
-定义：要用的属性不存在，要通过已有的属性计算得来(data)。
-原理：底层借助Object.defineProperty方法提供的getter和setter。
-get函数初次读取时执行一次、当依赖的函数改变再次调用。
-与methods相比，内部有缓存机制（复用）效率更高，调试方便。
-计算属性最终会出现在vm上，直接读取使用即可。
-
-
-
-
-如果计算属性要被修改，必须写set函数去响应修改，且set中要引起计算时依赖的数据发生改变。
-
-
-计算属性依赖data中的数据时，data中它所依赖的数据变化时，他也跟着变化
-
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html&amp;gt;
-    &amp;lt;head&amp;gt;
-        &amp;lt;meta charset=&quot;UTF-8&quot; /..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E3%80%81%E7%9B%91%E4%BA%8B%E5%B1%9E%E6%80%A7/">Read more</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><span class="page-number current">1</span><a class="page-number" href="/tags/Vue/page/2/">2</a><a class="page-number" href="/tags/Vue/page/3/">3</a><a class="extend next" rel="next" href="/tags/Vue/page/2/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container tag-widget is-in-tag-page"><h3>Tags</h3><section><a href="/tags/Git"><span class="tag post-item-tag" style="margin-bottom: 5px;">Git</span></a><a href="/tags/Makefile"><span class="tag post-item-tag" style="margin-bottom: 5px;">Makefile</span></a><a href="/tags/HTML%E3%80%81CSS%E3%80%81JavaScript"><span class="tag post-item-tag" style="margin-bottom: 5px;">HTML、CSS、JavaScript</span></a><a href="/tags/Vue"><span class="tag post-item-tag" style="margin-bottom: 5px;">Vue</span></a><a href="/tags/CSS"><span class="tag post-item-tag" style="margin-bottom: 5px;">CSS</span></a><a href="/tags/%E8%AE%A1%E7%BB%84"><span class="tag post-item-tag" style="margin-bottom: 5px;">计组</span></a></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+        console.log('hel..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/06/02/Vue%E6%A0%B8%E5%BF%83--mixin%E6%B7%B7%E5%85%A5/">Read more</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><span class="page-number current">1</span><a class="page-number" href="/tags/Vue/page/2/">2</a><a class="page-number" href="/tags/Vue/page/3/">3</a><a class="extend next" rel="next" href="/tags/Vue/page/2/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container tag-widget is-in-tag-page"><h3>Tags</h3><section><a href="/tags/Git"><span class="tag post-item-tag" style="margin-bottom: 5px;">Git</span></a><a href="/tags/Makefile"><span class="tag post-item-tag" style="margin-bottom: 5px;">Makefile</span></a><a href="/tags/HTML%E3%80%81CSS%E3%80%81JavaScript"><span class="tag post-item-tag" style="margin-bottom: 5px;">HTML、CSS、JavaScript</span></a><a href="/tags/Vue"><span class="tag post-item-tag" style="margin-bottom: 5px;">Vue</span></a><a href="/tags/CSS"><span class="tag post-item-tag" style="margin-bottom: 5px;">CSS</span></a><a href="/tags/%E8%AE%A1%E7%BB%84"><span class="tag post-item-tag" style="margin-bottom: 5px;">计组</span></a></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')
