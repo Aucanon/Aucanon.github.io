@@ -1,0 +1,67 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>Vue核心--Vue简介、脚手架</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/head.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="概念Vue就是一套用于构建用户界面的渐进式框架。具体介绍可以看下Vue官方的介绍 - Vue.js
+特点
+采用组件化模式，提高代码复用率、且让代码更好维护
+
+声明式编码，让编码人员无需直接操作DOM，提高开发效率
+
+使用虚拟DOM+优秀的Diff算法，尽量复用DOM节点
+创建Vue(脚手架)脚手架创建vue create xxx 
+
+创建后在项目目录下通过yarn serve或npm run serve运行
+文件结构
+
+favicon.ico: 页签图标
+
+index.html: 主页面
+
+assets: 存放静态资源
+
+component: 存放组件
+
+App.vue: 汇总所有组件
+
+main.js: 入口文件
+
+.gitignore: git版本管制忽略的配置
+
+babel.config.js: ba.."><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Vue核心--Vue简介、脚手架</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAVue-%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="toc-text">创建Vue(脚手架)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9B%E5%BB%BA"><span class="toc-text">脚手架创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">文件结构</span></a></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Vue核心--Vue简介、脚手架</h1><time class="has-text-grey" datetime="2022-05-29T16:00:00.000Z">2022-05-30</time><article class="mt-2 post-content"><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Vue就是一套用于构建用户界面的渐进式框架。具体介绍可以看下Vue官方的介绍 - <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/">Vue.js</a></p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li><p>采用组件化模式，提高代码复用率、且让代码更好维护</p>
+</li>
+<li><p>声明式编码，让编码人员无需直接操作DOM，提高开发效率</p>
+</li>
+<li><p>使用虚拟DOM+优秀的Diff算法，尽量复用DOM节点</p>
+<h2 id="创建Vue-脚手架"><a href="#创建Vue-脚手架" class="headerlink" title="创建Vue(脚手架)"></a>创建Vue(脚手架)</h2><h4 id="脚手架创建"><a href="#脚手架创建" class="headerlink" title="脚手架创建"></a>脚手架创建</h4><pre><code class="javascript">vue create xxx 
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/fa17380bc12241b58bdc815a70e242b8.png#pic_center" alt="在这里插入图片描述"><br>创建后在项目目录下通过<code>yarn serve</code>或<code>npm run serve</code>运行</p>
+<h4 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h4><p><img src="https://img-blog.csdnimg.cn/03737265ea554cd3b2c0cc2a4932ba14.png#pic_center" alt="在这里插入图片描述"></p>
+</li>
+<li><p><code>favicon.ico</code>: 页签图标</p>
+</li>
+<li><p><code>index.htm</code>l: 主页面</p>
+</li>
+<li><p><code>assets</code>: 存放静态资源</p>
+</li>
+<li><p><code>component</code>: 存放组件</p>
+</li>
+<li><p><code>App.vue</code>: 汇总所有组件</p>
+</li>
+<li><p><code>main.js</code>: 入口文件</p>
+</li>
+<li><p><code>.gitignore</code>: git版本管制忽略的配置</p>
+</li>
+<li><p><code>babel.config.js</code>: babel的配置文件</p>
+</li>
+<li><p><code>jsconfig.json</code>: 指定了JavaScript 语言服务提供的功能的根文件和选项</p>
+</li>
+<li><p><code>package.json</code>: 应用包配置文件 </p>
+</li>
+<li><p><code>README.md</code>: 应用描述文件</p>
+</li>
+<li><p><code>yarn.lock</code>: 和package-lock.json文件相同作用：包版本控制文件</p>
+</li>
+</ul>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/05/30/Vue%E6%A0%B8%E5%BF%83--MVVM%E6%A8%A1%E5%9E%8B/" title="Vue核心--MVVM模型"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Vue核心--MVVM模型</span></a><a class="button is-default" href="/2022/04/24/SpeechSynthesisUtterance%E8%AF%AD%E9%9F%B3%E6%92%AD%E6%8A%A5%E7%9A%84%E4%BD%BF%E7%94%A8text-reader%EF%BC%88HTML+CSS+Js%EF%BC%89/" title="SpeechSynthesisUtterance语音播报的使用text-reader（HTML+CSS+Js）"><span class="has-text-weight-semibold">Next: SpeechSynthesisUtterance语音播报的使用text-reader（HTML+CSS+Js）</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Aucanon/Aucanon.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Aucanon"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><a title="rss" target="_blank" rel="noopener nofollow" href="/atom.xml"><i class="iconfont icon-rss"></i></a><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Aucanon 2022</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p class="is-flex is-justify-content-center"></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/Aucanon/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

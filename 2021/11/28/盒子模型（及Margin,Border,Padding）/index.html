@@ -1,0 +1,112 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>盒子模型</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/head.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="盒子模型​    盒子模型(Box Modle)，所有的HTML元素都可以看做是一个盒子。CSS盒模型本质上就是一个盒子，然后用这个盒子来封装HTML标签。
+盒子的属性盒子总共有五个属性：
+
+width,height(元素的高度、宽度)
+
+Margin(外边距)
+
+Border(边框)
+
+Padding(填充)
+
+
+盒子宽度 = 宽度 + 左填充 + 右填充 + 左边框 + 右边框 + 左边距 + 右边距
+盒子高度 = 高度 + 顶部填充 + 底部填充 + 上边框 + 下边框 + 上边距 + 下边距
+盒子中的区域
+MarginMarginMargin属性定义了元素周围的空间。可以单独改变元素的上、下、左、右边距，也可以一起改变。Margin没有背景颜色。
+
+Margin-top
+
+Margin-right
+.."><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">盒子模型</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="toc-text">盒子模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%92%E5%AD%90%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">盒子的属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%92%E5%AD%90%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F"><span class="toc-text">盒子中的区域</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Margin"><span class="toc-text">Margin</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Margin-1"><span class="toc-text">Margin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Margin%E7%9A%84%E7%AE%80%E5%86%99%E5%B1%9E%E6%80%A7"><span class="toc-text">Margin的简写属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Border"><span class="toc-text">Border</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Border-1"><span class="toc-text">Border</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Border%E5%B1%9E%E6%80%A7"><span class="toc-text">Border属性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Border-style"><span class="toc-text">Border-style</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Border-width"><span class="toc-text">Border-width</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Border-color"><span class="toc-text">Border-color</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Border%E7%9A%84%E7%AE%80%E5%86%99%E5%B1%9E%E6%80%A7"><span class="toc-text">Border的简写属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Padding"><span class="toc-text">Padding</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Padding-1"><span class="toc-text">Padding</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Padding%E7%9A%84%E7%AE%80%E5%86%99%E5%B1%9E%E6%80%A7"><span class="toc-text">Padding的简写属性</span></a></li></ol></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/CSS"><i class="tag post-item-tag">CSS</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">盒子模型</h1><time class="has-text-grey" datetime="2021-11-27T16:00:00.000Z">2021-11-28</time><article class="mt-2 post-content"><h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h1><p>​    盒子模型(Box Modle)，所有的HTML元素都可以看做是一个盒子。CSS盒模型本质上就是一个盒子，然后用这个盒子来封装HTML标签。</p>
+<h4 id="盒子的属性"><a href="#盒子的属性" class="headerlink" title="盒子的属性"></a>盒子的属性</h4><p>盒子总共有五个属性：</p>
+<ul>
+<li><p><code>width,height</code>(元素的高度、宽度)</p>
+</li>
+<li><p><code>Margin</code>(外边距)</p>
+</li>
+<li><p><code>Border</code>(边框)</p>
+</li>
+<li><p><code>Padding</code>(填充)</p>
+</li>
+</ul>
+<p>盒子宽度 = 宽度 + 左填充 + 右填充 + 左边框 + 右边框 + 左边距 + 右边距</p>
+<p>盒子高度 = 高度 + 顶部填充 + 底部填充 + 上边框 + 下边框 + 上边距 + 下边距</p>
+<h4 id="盒子中的区域"><a href="#盒子中的区域" class="headerlink" title="盒子中的区域"></a>盒子中的区域</h4><p><img src="https://i.loli.net/2021/11/28/mN4OogUyX7bqkrx.png" alt="IMG_20211128_144416.png"></p>
+<h2 id="Margin"><a href="#Margin" class="headerlink" title="Margin"></a>Margin</h2><h4 id="Margin-1"><a href="#Margin-1" class="headerlink" title="Margin"></a>Margin</h4><p>Margin属性定义了元素周围的空间。可以单独改变元素的上、下、左、右边距，也可以一起改变。<code>Margin</code>没有背景颜色。</p>
+<ul>
+<li><p><code>Margin-top</code></p>
+</li>
+<li><p><code>Margin-right</code></p>
+</li>
+<li><p><code>Margin-bottom</code></p>
+</li>
+<li><p><code>Margin-left</code></p>
+</li>
+</ul>
+<p>值：</p>
+<ul>
+<li><p><code>auto</code> - 设置浏览器边距，取决于浏览器</p>
+</li>
+<li><p><code>length</code> - 以px,pt,cm等单位制定</p>
+</li>
+<li><p><code>%</code> - 定义一个百分比的外边距</p>
+</li>
+</ul>
+<h4 id="Margin的简写属性"><a href="#Margin的简写属性" class="headerlink" title="Margin的简写属性"></a>Margin的简写属性</h4><pre><code class="css">margin：50px 50px 75px 80px;
+</code></pre>
+<ul>
+<li><p>上外边距：50px</p>
+</li>
+<li><p>右外边距：50px</p>
+</li>
+<li><p>下外边距：75px</p>
+</li>
+<li><p>左外边距：80px</p>
+</li>
+</ul>
+<h2 id="Border"><a href="#Border" class="headerlink" title="Border"></a>Border</h2><h4 id="Border-1"><a href="#Border-1" class="headerlink" title="Border"></a>Border</h4><p><code>Border</code>(边框),边框有三个要素：粗细、线型、颜色。</p>
+<h4 id="Border属性"><a href="#Border属性" class="headerlink" title="Border属性"></a>Border属性</h4><h5 id="Border-style"><a href="#Border-style" class="headerlink" title="Border-style"></a>Border-style</h5><p>边框的线型：</p>
+<p>![@8HSU_4Y1RAJG_NN`2_HRVV.png](<a target="_blank" rel="noopener" href="https://i.loli.net/2021/11/28/sjJYm5oLdMGpCO2.png">https://i.loli.net/2021/11/28/sjJYm5oLdMGpCO2.png</a>)</p>
+<h5 id="Border-width"><a href="#Border-width" class="headerlink" title="Border-width"></a>Border-width</h5><p>属性制定四个边框的宽度。宽度设置依然是以px,pt,cm,em等长度进行计算。不过增加了以下三个预定值：<code>thin</code>,<code>medium</code>,<code>thick</code>。</p>
+<p>同样边框的宽度也可以四条分别设定。</p>
+<h5 id="Border-color"><a href="#Border-color" class="headerlink" title="Border-color"></a>Border-color</h5><p>属性设置四个边框的颜色。和<code>background</code>一样可以使用：<code>name(制定颜色名)</code>,<code>HEX(#fffff)</code>,<code>RGB(255,0,0)</code>等方式进行设定。</p>
+<p>每一条边框的颜色也是可以单独进行设置的。</p>
+<h4 id="Border的简写属性"><a href="#Border的简写属性" class="headerlink" title="Border的简写属性"></a>Border的简写属性</h4><pre><code class="css">border: 5px solid black;
+</code></pre>
+<p><img src="https://i.loli.net/2021/11/28/gMaqsyNEoXUCiW5.png" alt="_H_5UBE47XTRO7497_GW_5K.png"></p>
+<h2 id="Padding"><a href="#Padding" class="headerlink" title="Padding"></a>Padding</h2><h4 id="Padding-1"><a href="#Padding-1" class="headerlink" title="Padding"></a>Padding</h4><p><code>Padding</code>定义了元素边框与元素内容之间的空间。</p>
+<p>填充也可以选择单一方向进行填充。</p>
+<ul>
+<li><p><code>padding-top</code></p>
+</li>
+<li><p><code>padding-right</code></p>
+</li>
+<li><p><code>padding-bottom</code></p>
+</li>
+<li><p><code>padding-left</code></p>
+</li>
+</ul>
+<p>值：</p>
+<ul>
+<li><p><code>length</code> - 定义一个固定的填充以px,pt,cm等单位制定。</p>
+</li>
+<li><p><code>%</code> - 定义一个百分比的填充</p>
+</li>
+</ul>
+<h4 id="Padding的简写属性"><a href="#Padding的简写属性" class="headerlink" title="Padding的简写属性"></a>Padding的简写属性</h4><pre><code class="css">padding:25px 30px 50px 100px;
+</code></pre>
+<ul>
+<li><p>上填充：25px</p>
+</li>
+<li><p>右填充：30px</p>
+</li>
+<li><p>下填充：50px</p>
+</li>
+<li><p>左填充：100px</p>
+</li>
+</ul>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/04/20/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%92%8C%E5%91%BD%E4%BB%A4/" title="Git的基本使用方法和命令"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Git的基本使用方法和命令</span></a><a class="button is-default" href="/2021/11/22/css-background/" title="background"><span class="has-text-weight-semibold">Next: background</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Aucanon/Aucanon.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Aucanon"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><a title="rss" target="_blank" rel="noopener nofollow" href="/atom.xml"><i class="iconfont icon-rss"></i></a><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Aucanon 2022</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p class="is-flex is-justify-content-center"></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/Aucanon/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

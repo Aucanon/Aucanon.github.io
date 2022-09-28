@@ -1,0 +1,322 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>Vue组件间通信</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/head.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content=" 组件间通信
+props用于父组件给子组件传值
+
+所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外变更父级组件的状态，从而导致你的应用的数据流向难以理解。额外的，每次父级组件发生变更时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。
+
+props接收时有三种形式：
+
+默认接收：prop:['name']
+限制类型接收：props:{name:String}
+限制类型、必要性、指定默认值：
+
+props:{
+    name:{
+        type:String,
+        required.."><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Vue组件间通信</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#props"><span class="toc-text">props</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6"><span class="toc-text">自定义事件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF"><span class="toc-text">全局事件总线</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85%E4%B8%8E%E5%8F%91%E5%B8%83"><span class="toc-text">消息订阅与发布</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vuex"><span class="toc-text">Vuex</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%92%E6%A7%BD"><span class="toc-text">插槽</span></a></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Vue组件间通信</h1><time class="has-text-grey" datetime="2022-07-22T16:00:00.000Z">2022-07-23</time><article class="mt-2 post-content"><p> 组件间通信</p>
+<h1 id="props"><a href="#props" class="headerlink" title="props"></a>props</h1><p>用于父组件给子组件传值</p>
+<blockquote>
+<p>所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外变更父级组件的状态，从而导致你的应用的数据流向难以理解。<br>额外的，每次父级组件发生变更时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。</p>
+</blockquote>
+<p><code>props</code>接收时有三种形式：</p>
+<ol>
+<li>默认接收：<code>prop:['name']</code></li>
+<li>限制类型接收：<code>props:{name:String}</code></li>
+<li>限制类型、必要性、指定默认值：</li>
+</ol>
+<pre><code class="javascript">props:{
+    name:{
+        type:String,
+        required:true,
+        default:'zhangsan'
+    }
+}
+</code></pre>
+<p>父组件在子组件身上传递数据：</p>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div&gt;
+        &lt;Student name="zhangsan" sex="男" :age="18"/&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import Student from './components/Student'
+    export default {
+        name:'App',
+        components:{Student}
+    }
+&lt;/script&gt;
+</code></pre>
+<p>子组件通过<code>props</code>属性接收父组件传递的数据：</p>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div&gt;
+        &lt;h2&gt;学生姓名：{{name}}&lt;/h2&gt;
+        &lt;h2&gt;学生性别：{{sex}}&lt;/h2&gt;
+        &lt;h2&gt;学生年龄：{{age}}&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        name:'Student',
+        props:{
+            name:{
+                type:String, //name的类型是字符串
+                required:true, //name是必要的
+            },
+            age:{
+                type:Number,
+                default:18 //默认值
+            },
+            sex:{
+                type:String,
+                required:true
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>注意：data中的数据是可读可写的；props中的属性只是可读的，无法重新赋值，重新赋值会报错（也就是说，子组件不要直接去修改父组件中的数据）。</p>
+</blockquote>
+<h1 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h1><p>用于子组件给父组件传递数据</p>
+<p>子组件中触发自定义事件（触发<code>emit</code>事件）</p>
+<blockquote>
+<p>比如在子组件中有一个点击事件：点击事件中的方法中this.$emit(‘自定义事件名称’，传递的参数)</p>
+</blockquote>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div class="student"&gt;
+        &lt;h2&gt;姓名：{{name}}&lt;/h2&gt;
+        &lt;h2&gt;性别：{{sex}}&lt;/h2&gt;
+        &lt;h2&gt;年龄：{{age}}&lt;/h2&gt;
+        &lt;button @click="sendStudentlName"&gt;把姓名传递给App&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        name:'Student',
+        data() {
+            return {
+                name:'张三',
+                sex:'男',
+                age:18
+            }
+        },
+        methods: {
+            sendStudentlName(){
+                //触发Student组件实例身上的transmit事件
+                this.$emit('transmit',this.name,666,888,900)
+            },
+        },
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+</code></pre>
+<p>父组件定义自定义事件并接收数据</p>
+<blockquote>
+<p>在父组件中的子标签上写自定义事件及方法@自定义事件名称=”方法名称”</p>
+</blockquote>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div class="app"&gt;
+        &lt;h1&gt;学生姓名是:{{studentName}}&lt;/h1&gt;
+        &lt;!-- 通过父组件给子组件绑定一个自定义事件实现：子给父传递数据（使用@或v-on使用ref） --&gt;
+        &lt;Student ref="student" @click.native="show"/&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import Student from './components/Student'
+
+    export default {
+        name:'App',
+        components:{Student},
+        data() {
+            return {
+                studentName:''
+            }
+        },
+        methods: {
+            getStudentName(name){
+                this.studentName = name
+            },
+            show(){
+                alert('tt')
+            }
+        },
+        mounted() {
+            this.$refs.student.$on('transmit',this.getStudentName) //绑定自定义事件
+        },
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+</code></pre>
+<h1 id="全局事件总线"><a href="#全局事件总线" class="headerlink" title="全局事件总线"></a>全局事件总线</h1><p>一种适用于任意组件间的通信方式<br>安装全局事件总线：</p>
+<blockquote>
+<p>在入口文件<code>main.js</code>中在使用<code>beforecreate</code>实例初始化之后安装</p>
+</blockquote>
+<pre><code class="javascript">import Vue from 'vue'
+import App from './App.vue'
+
+new Vue({
+    el:'#app',
+    render: h =&gt; h(App),
+    beforeCreate() {
+        Vue.prototype.$bus = this //安装全局事件总线
+    },
+})
+</code></pre>
+<blockquote>
+<p><code>$bus</code>就是当前应用的vm实例</p>
+</blockquote>
+<p>使用事件总线：</p>
+<blockquote>
+<p>传递数据：<code>this.$bus.$emit('***',data)</code></p>
+</blockquote>
+<blockquote>
+<p>接收数据：<code>this.$bus.$on('***',this.方法名)</code>/<code>this.$bus.$on('***',回调函数)</code><br>（回调函数写成箭头函数形式）</p>
+</blockquote>
+<blockquote>
+<p>最后最好在beforeDestroy钩子中使用<code>$off</code>对当前组件所使用到的事件进行解绑</p>
+</blockquote>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div class="student"&gt;
+        &lt;h2&gt;学生姓名：{{name}}&lt;/h2&gt;
+        &lt;h2&gt;学生性别：{{sex}}&lt;/h2&gt;
+        &lt;button @click="sendStudentName"&gt;把学生名传递给School组件&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        name:'Student',
+        data() {
+            return {
+                name:'张三',
+                sex:'男',
+            }
+        },
+        methods: {
+            sendStudentName(){
+                this.$bus.$emit('hello',this.name)
+            }
+        },
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div class="school"&gt;
+        &lt;h2&gt;姓名：{{name}}&lt;/h2&gt;
+        &lt;h2&gt;学校地址：{{address}}&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        name:'School',
+        data() {
+            return {
+                name:'李四',
+                address:'北京',
+            }
+        },
+        mounted() {
+            this.$bus.$on('hello',(data)=&gt;{
+                console.log(data)
+            })
+        },
+        beforeDestroy() {
+            this.$bus.$off('hello')
+        },
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<blockquote>
+<p><code>$on</code>:绑定事件；<code>$emit</code>:触发事件；<code>$off</code>:解绑事件</p>
+</blockquote>
+<h1 id="消息订阅与发布"><a href="#消息订阅与发布" class="headerlink" title="消息订阅与发布"></a>消息订阅与发布</h1><p>通过pubsub.js插件，可用于任意组件间通信<br>1.安装插件：<code>npm i pubsub-js</code><br>2.引入：<code>import pubsub from 'pubsub-js'</code><br>3.数据发送：<code>pubsub.publish('xxx',数据)</code><br>4.数据接收：<code>pubsub.subscribe('xxx',data)</code></p>
+<p>数据发送：</p>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div class="student"&gt;
+        &lt;h2&gt;学生姓名：{{name}}&lt;/h2&gt;
+        &lt;h2&gt;学生性别：{{sex}}&lt;/h2&gt;
+        &lt;button @click="sendStudentName"&gt;把学生名传递给School组件&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import pubsub from 'pubsub-js'
+    export default {
+        name:'Student',
+        data() {
+            return {
+                name:'张三',
+                sex:'男',
+            }
+        },
+        methods: {
+            sendStudentName(){
+                pubsub.publish('hello',this.name)
+            }
+        },
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<p>数据接收：</p>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div class="school"&gt;
+        &lt;h2&gt;姓名：{{name}}&lt;/h2&gt;
+        &lt;h2&gt;学校地址：{{address}}&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import pubsub from 'pubsub-js'
+    export default {
+        name:'School',
+        data() {
+            return {
+                name:'李四',
+                address:'北京',
+            }
+        },
+        mounted() {
+            this.pubId = pubsub.subscribe('hello',(msgName,data)=&gt;{
+                console.log(data)
+            })
+        },
+        beforeDestroy() {
+            pubsub.unsubscribe(this.pubId)
+        },
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<blockquote>
+<p>最后也最好在beforeDestroy钩子中使用 <code>PubSub.unsubscribe(pid)</code>取消订阅</p>
+</blockquote>
+<h1 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h1><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式 + 库。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51524737/article/details/125950480">Vuex组件间通信</a></p>
+<h1 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h1><p><a target="_blank" rel="noopener" href="http://t.csdn.cn/jUa0r">slot插槽</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/07/23/Vue%E6%8F%92%E6%A7%BD/" title="Vue插槽"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Vue插槽</span></a><a class="button is-default" href="/2022/06/02/Vue%E6%A0%B8%E5%BF%83--mixin%E6%B7%B7%E5%85%A5/" title="Vue核心--mixin混入"><span class="has-text-weight-semibold">Next: Vue核心--mixin混入</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Aucanon/Aucanon.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Aucanon"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><a title="rss" target="_blank" rel="noopener nofollow" href="/atom.xml"><i class="iconfont icon-rss"></i></a><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Aucanon 2022</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p class="is-flex is-justify-content-center"></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/Aucanon/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

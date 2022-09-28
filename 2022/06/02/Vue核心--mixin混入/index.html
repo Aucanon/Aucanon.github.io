@@ -1,0 +1,107 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>Vue核心--mixin混入</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/head.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="﻿&amp;gt;混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本身的选项。
+
+全局注册一个混入，影响注册之后所有创建的每个 Vue 实例。插件作者可以使用混入，向组件注入自定义的行为。不推荐在应用代码中使用。
+
+首先要定义一个混合，通常在src内创建一个mixin.js文件在该文件内定义所需要的混入。
+export const mix = {
+    methods: {
+        showName(){
+            alert(this.name)
+        }
+    },
+    mounted() {
+        console.log('hel.."><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Vue核心--mixin混入</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile is-hidden"></div><div class="column is-9"><header class="my-4"><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Vue核心--mixin混入</h1><time class="has-text-grey" datetime="2022-06-01T16:00:00.000Z">2022-06-02</time><article class="mt-2 post-content"><p>﻿&gt;混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本身的选项。</p>
+<blockquote>
+<p>全局注册一个混入，影响注册之后所有创建的每个 Vue 实例。插件作者可以使用混入，向组件注入自定义的行为。<br>不推荐在应用代码中使用。</p>
+</blockquote>
+<p>首先要定义一个混合，通常在src内创建一个mixin.js文件在该文件内定义所需要的混入。</p>
+<pre><code class="javascript">export const mix = {
+    methods: {
+        showName(){
+            alert(this.name)
+        }
+    },
+    mounted() {
+        console.log('hello')
+    },
+}
+export const mixe = {
+    data() {
+        return {
+            a:1,
+            b:2
+        }
+    },
+}
+</code></pre>
+<p>全局混入：混入也可以进行全局注册。使用时格外小心！一旦使用全局混入，它将影响每一个之后创建的 Vue 实例。使用恰当时，这可以用来为自定义选项注入处理逻辑。</p>
+<pre><code class="javascript">import Vue from 'vue'
+import App from './App.vue'
+import {mix,mixe} from './mixin'
+
+Vue.config.productionTip = false
+
+Vue.mixin(mix)
+Vue.mixin(mixe)
+
+
+new Vue({
+    el:'#app',
+    render: h =&gt; h(App)
+})
+</code></pre>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div&gt;
+        &lt;h2&gt;学生姓名：{{name}}&lt;/h2&gt;
+        &lt;h2&gt;学生性别：{{sex}}&lt;/h2&gt;
+        &lt;button @click="showName"&gt;点击&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+    export default {
+        name:'Student',
+        data() {
+            return {
+                name:'张三',
+                sex:'女'
+            }
+        },
+    }
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>请谨慎使用全局混入，因为它会影响每个单独创建的 Vue 实例 (包括第三方组件)。大多数情况下，只应当应用于自定义选项，就像上面示例一样。推荐将其作为插件发布，以避免重复应用混入。</p>
+</blockquote>
+<p>局部混入：</p>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div&gt;
+        &lt;h2&gt;学生姓名：{{name}}&lt;/h2&gt;
+        &lt;h2&gt;学生性别：{{sex}}&lt;/h2&gt;
+        &lt;button @click="showName"&gt;点击&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import { mix } from './mixin'
+
+    export default {
+        name:'Student',
+        data() {
+            return {
+                name:'张三',
+                sex:'女'
+            }
+        },
+        mixins:[mix]
+    }
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>当组件和混入对象含有同名选项时，这些选项将以恰当的方式进行“合并”。<br>比如，数据对象在内部会进行递归合并，并在发生冲突时以组件数据优先。</p>
+</blockquote>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/07/23/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/" title="Vue组件间通信"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Vue组件间通信</span></a><a class="button is-default" href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--filter%E8%BF%87%E6%BB%A4%E5%99%A8/" title="Vue核心--filter过滤器"><span class="has-text-weight-semibold">Next: Vue核心--filter过滤器</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Aucanon/Aucanon.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Aucanon"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><a title="rss" target="_blank" rel="noopener nofollow" href="/atom.xml"><i class="iconfont icon-rss"></i></a><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Aucanon 2022</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p class="is-flex is-justify-content-center"></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/Aucanon/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

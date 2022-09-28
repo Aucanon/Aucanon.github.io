@@ -1,0 +1,294 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>Vue Router</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/head.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="前后端路由路由就是一个key-value的映射关系。（路径-component/function）
+前端路由前端路由的value即component，不同的路径展示不同的组件。vue-router专门用来实现SPA应用。
+
+SPA应用：单页面WEB应用，导航连接的改变不会刷新整个页面，指挥更新局部的页面。并且数据需要通过ajax请求获得。
+
+后端路由value对应function，根据根据请求路径匹配相应的函数处理响应请求。
+基本使用路由组件
+
+路由组件通常放在项目目录pages或者views中，并且通过路由使用相应的组件。
+
+非路由组件
+
+非路由组件通常放在项目目录components中，并且通过对应标签使用
+
+vue-router使用:
+
+下载vue-router： npm i vue-router
+引.."><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Vue Router</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="toc-text">前后端路由</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="toc-text">前端路由</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="toc-text">后端路由</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%B5%8C%E5%A5%97"><span class="toc-text">路由嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%8F%82"><span class="toc-text">路由传参</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#query%E5%8F%82%E6%95%B0"><span class="toc-text">query参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#params%E5%8F%82%E6%95%B0"><span class="toc-text">params参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%B7%AF%E7%94%B1"><span class="toc-text">命名路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB"><span class="toc-text">路由守卫</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%AE%88%E5%8D%AB"><span class="toc-text">全局守卫</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8B%AC%E4%BA%AB%E5%AE%88%E5%8D%AB"><span class="toc-text">独享守卫</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%86%85%E5%AE%88%E5%8D%AB"><span class="toc-text">组件内守卫</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%8B%AC%E6%9C%89%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90"><span class="toc-text">路由独有的两个生命周期钩子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-text">路由的两种工作模式</span></a></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Vue Router</h1><time class="has-text-grey" datetime="2022-07-23T16:00:00.000Z">2022-07-24</time><article class="mt-2 post-content"><h3 id="前后端路由"><a href="#前后端路由" class="headerlink" title="前后端路由"></a>前后端路由</h3><p>路由就是一个key-value的映射关系。（路径-component/function）</p>
+<h5 id="前端路由"><a href="#前端路由" class="headerlink" title="前端路由"></a>前端路由</h5><p>前端路由的value即component，不同的路径展示不同的组件。<br>vue-router专门用来实现SPA应用。</p>
+<blockquote>
+<p><code>SPA</code>应用：单页面WEB应用，导航连接的改变不会刷新整个页面，指挥更新局部的页面。并且数据需要通过ajax请求获得。</p>
+</blockquote>
+<h5 id="后端路由"><a href="#后端路由" class="headerlink" title="后端路由"></a>后端路由</h5><p>value对应function，根据根据请求路径匹配相应的函数处理响应请求。</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>路由组件</p>
+<blockquote>
+<p>路由组件通常放在项目目录pages或者views中，并且通过路由使用相应的组件。</p>
+</blockquote>
+<p>非路由组件</p>
+<blockquote>
+<p>非路由组件通常放在项目目录components中，并且通过对应标签使用</p>
+</blockquote>
+<p>vue-router使用:</p>
+<ol>
+<li>下载vue-router： <code>npm i vue-router</code></li>
+<li>引入vue-router：<code>import VueRouter from 'vue-router'</code></li>
+<li>使用vue-router插件： <code>Vue.use(VueRouter)</code></li>
+<li>在入口文件main.js中进行全局注册：</li>
+</ol>
+<pre><code class="javascript">//引入Vue
+import Vue from 'vue'
+//引入App
+import App from './App.vue'
+//引入VueRouter
+import VueRouter from 'vue-router'
+//引入路由器
+import router from './router'
+
+//应用插件
+Vue.use(VueRouter)
+
+//创建vm
+new Vue({
+    el: '#app',
+    render: h =&gt; h(App),
+    router: router
+})
+</code></pre>
+<ol start="5">
+<li>编写router配置项</li>
+</ol>
+<pre><code class="javascript">//引入VueRouter
+import VueRouter from 'vue-router'
+//引入Luyou 组件
+import About from '../components/About'
+import Home from '../components/Home'
+
+//创建router实例对象，去管理一组一组的路由规则
+const router = new VueRouter({
+    routes:[
+        {
+            path:'/about',
+            component:About
+        },
+        {
+            path:'/home',
+            component:Home
+        }
+    ]
+})
+
+//暴露router
+export default router
+</code></pre>
+<blockquote>
+<p>通过切换隐藏的路由组件默认是呗销毁的，当需要用的时候再去挂载上。</p>
+</blockquote>
+<h3 id="路由嵌套"><a href="#路由嵌套" class="headerlink" title="路由嵌套"></a>路由嵌套</h3><p>多级路由要在嵌套的出口中渲染组件，需要在 VueRouter 的参数中使用 children 配置。</p>
+<pre><code class="javascript">routes:[
+    {
+        path:'/about',
+        component:About,
+    },
+    {
+        path:'/home',
+        component:Home,
+        children:[ //通过children配置子级路由
+            {
+                path:'child1',
+                component:Child1
+            },
+            {
+                path:'child2',
+                component:Child2
+            }
+        ]
+    }
+]
+</code></pre>
+<h3 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h3><h4 id="query参数"><a href="#query参数" class="headerlink" title="query参数"></a>query参数</h4><p>不属于路径中的一部分，路径与参数之间用<code>？</code>隔开,路由信息配置path时不需要占位</p>
+<p>声明式导航传参：</p>
+<p>传递参数：</p>
+<pre><code class="javascript">&lt;!-- 跳转并携带query参数，to的字符串写法 --&gt;
+&lt;router-link :to="/home/message/detail?id=666&amp;title=你好"&gt;跳转&lt;/router-link&gt;
+                
+&lt;!-- 跳转并携带query参数，to的对象写法 --&gt;
+&lt;router-link 
+    :to="{
+        path:'/home/message/detail',
+        query:{
+           id:666,
+            title:'你好'
+        }
+    }"
+&gt;跳转&lt;/router-link&gt;
+</code></pre>
+<p>接收参数：</p>
+<p><code>$route.query.id</code><br><code>$route.query.title</code></p>
+<blockquote>
+<p>to的对象写法中的path可以换成name。</p>
+</blockquote>
+<p>编程式导航传参：</p>
+<p>传递参数：</p>
+<pre><code class="javascript">this.$route.push({
+    name:'search',
+    query:{
+        k:123
+    }
+</code></pre>
+<p>接收参数与声明式导航相同。</p>
+<blockquote>
+<p>编程式导航的配置项不能使用path,只能使用name</p>
+</blockquote>
+<h4 id="params参数"><a href="#params参数" class="headerlink" title="params参数"></a>params参数</h4><p>属于路径中的一部分，需要注意，在配置路由时，路由信息配置path时需要占位<br>路由配置时声明接收params参数：</p>
+<pre><code class="javascript">{
+    path:'/home',
+    component:Home,
+    children:[
+        {
+            path:'news',
+            component:News,
+        },
+        {
+            path:'message',
+            component:Message,
+            children:[
+                {
+                    name:'xiangqing',
+                    path:'detail/:id/:title',
+                    component:Detail,
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+<p>参数的传递和接收与query参数传递相似</p>
+<blockquote>
+<p>路由携带params参数时，如使用to的对象写法，则不能使用path配置项，必须使用name</p>
+</blockquote>
+<h3 id="命名路由"><a href="#命名路由" class="headerlink" title="命名路由"></a>命名路由</h3><p>能够简化路由的跳转</p>
+<ol>
+<li>给路由命名，增加name属性</li>
+</ol>
+<pre><code class="javascript">{
+    path:'/demo',
+    component:Demo,
+    children:[
+        {
+            path:'test',
+            component:Test,
+            children:[
+                {
+                      name:'hello' //给路由命名
+                    path:'welcome',
+                    component:Hello,
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+<ol start="2">
+<li>   简化跳转：</li>
+</ol>
+<pre><code class="javascript">&lt;!--简化前，需要写完整的路径 --&gt;
+&lt;router-link to="/demo/test/welcome"&gt;跳转&lt;/router-link&gt;
+
+&lt;!--简化后，直接通过名字跳转 --&gt;
+&lt;router-link :to="{name:'hello'}"&gt;跳转&lt;/router-link&gt;
+
+&lt;!--简化写法配合传递参数 --&gt;
+&lt;router-link 
+    :to="{
+        name:'hello',
+        query:{
+           id:666,
+            title:'你好'
+        }
+    }"
+    &gt;跳转
+&lt;/router-link&gt;
+</code></pre>
+<h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><h4 id="全局守卫"><a href="#全局守卫" class="headerlink" title="全局守卫"></a>全局守卫</h4><pre><code class="javascript">//全局前置守卫：初始化时执行、每次路由切换前执行
+router.beforeEach((to,from,next)=&gt;{
+    console.log('beforeEach',to,from)
+    if(to.meta.isAuth){ //判断当前路由是否需要进行权限控制
+        if(localStorage.getItem('house') === 'washroom'){ //权限控制的具体规则
+            next() //放行
+        }else{
+            alert('暂无权限进入')
+        }
+    }else{
+        next() //放行
+    }
+})
+
+//全局后置守卫：初始化时执行、每次路由切换后执行
+router.afterEach((to,from)=&gt;{
+    console.log('afterEach',to,from)
+    if(to.meta.title){ 
+        document.title = to.meta.title //修改网页的title
+    }else{
+        document.title = 'my_house'
+    }
+})
+</code></pre>
+<blockquote>
+<p>后置路由守卫没有 next</p>
+</blockquote>
+<h4 id="独享守卫"><a href="#独享守卫" class="headerlink" title="独享守卫"></a>独享守卫</h4><p>配置独享守卫的路由组件就需要权限进入</p>
+<pre><code class="javascript">beforeEnter(to,from,next){
+    console.log('beforeEnter',to,from)
+    if(to.meta.isAuth){ //判断当前路由是否需要进行权限控制
+        if(localStorage.getItem('house') === 'washroom'){
+            next()
+        }else{
+            alert('暂无权限进入')
+        }
+    }else{
+        next()
+    }
+}
+</code></pre>
+<h4 id="组件内守卫"><a href="#组件内守卫" class="headerlink" title="组件内守卫"></a>组件内守卫</h4><p>组件内路由守卫是在组件内编写</p>
+<pre><code class="javascript">//通过路由规则，进入该组件时被调用
+beforeRouteEnter (to, from, next) {
+    if(to.meta.isAuth){ //判断是否需要鉴权
+        if(localStorage.getItem('house')==='washroom'){
+            next()
+        }else{
+            alert('错误！无权限进入！')
+        }
+    }else{
+        next()
+    }
+},
+
+//通过路由规则，离开该组件时被调用
+beforeRouteLeave (to, from, next) {
+    next()
+}
+</code></pre>
+<blockquote>
+<p><code>next()</code> 表示直接放行,<br><code>next('/home')</code> 表示直接放行到home路由<br><code>next(false)</code> 表示停留在原来的路由</p>
+</blockquote>
+<h3 id="路由独有的两个生命周期钩子"><a href="#路由独有的两个生命周期钩子" class="headerlink" title="路由独有的两个生命周期钩子"></a>路由独有的两个生命周期钩子</h3><p>能够对路由组件的激活状态进行捕捉</p>
+<blockquote>
+<p><code>activated</code>：路由组件被激活时触发<br><code>deactivated</code>：路由组件失活时触发</p>
+</blockquote>
+<h3 id="路由的两种工作模式"><a href="#路由的两种工作模式" class="headerlink" title="路由的两种工作模式"></a>路由的两种工作模式</h3><pre><code>1. 对于一个url来说，什么是hash值？—— #及其后面的内容就是hash值。
+2. hash值不会包含在 HTTP 请求中，即：hash值不会带给服务器。
+3. hash模式：
+     1. 地址中永远带着#号，不美观 。
+        2. 若以后将地址通过第三方手机app分享，若app校验严格，则地址会被标记为不合法。
+       3. 兼容性较好。
+4. history模式：
+       1. 地址干净，美观 。
+      2. 兼容性和hash模式相比略差。
+       3. 应用部署上线时需要后端人员支持，解决刷新页面服务端404的问题。
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/09/28/Internet/" title="HTTP"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: HTTP</span></a><a class="button is-default" href="/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/" title="Vuex组件间通信"><span class="has-text-weight-semibold">Next: Vuex组件间通信</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Aucanon/Aucanon.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Aucanon"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><a title="rss" target="_blank" rel="noopener nofollow" href="/atom.xml"><i class="iconfont icon-rss"></i></a><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Aucanon 2022</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p class="is-flex is-justify-content-center"></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/Aucanon/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

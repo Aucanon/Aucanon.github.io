@@ -1,0 +1,162 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>Vue插槽</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/head.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="插槽用于父子组件之间的通信（一般是结构，即标签）
+可放置在函数参数位置的 JavaScript 表达式 (在支持的环境下可使用解构)。可选，即只需要在为插槽传入 prop 的时候使用。
+
+父组件向子组件指定位置插入html结构（默认插槽、具名插槽），或者子组件给父组件传递数据，父组件决定插入子组件对应位置的结构（作用域插槽）
+
+默认插槽&amp;lt;template&amp;gt;
+    &amp;lt;div&amp;gt;
+        &amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+    export default {
+        name:'',
+    }
+&amp;lt;/script&amp;gt;
+
+&amp;lt;style&amp;.."><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Vue插槽</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E6%A7%BD"><span class="toc-text">插槽</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E6%8F%92%E6%A7%BD"><span class="toc-text">默认插槽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD"><span class="toc-text">具名插槽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD"><span class="toc-text">作用域插槽</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Vue插槽</h1><time class="has-text-grey" datetime="2022-07-22T16:00:00.000Z">2022-07-23</time><article class="mt-2 post-content"><h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p>用于父子组件之间的通信（一般是结构，即标签）</p>
+<p>可放置在函数参数位置的 JavaScript 表达式 (在支持的环境下可使用解构)。可选，即只需要在为插槽传入 prop 的时候使用。</p>
+<blockquote>
+<p>父组件向子组件指定位置插入html结构（默认插槽、具名插槽），或者子组件给父组件传递数据，父组件决定插入子组件对应位置的结构（作用域插槽）</p>
+</blockquote>
+<h4 id="默认插槽"><a href="#默认插槽" class="headerlink" title="默认插槽"></a>默认插槽</h4><pre><code class="javascript">&lt;template&gt;
+    &lt;div&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        name:'',
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div class="container"&gt;
+        &lt;GetUser&gt;
+            &lt;ul&gt;
+                &lt;li v-for="(people,index) in name" :key="index"&gt;{{people}}&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/GetUser&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import GetUser from './components/GetUser'
+    export default {
+        name:'App',
+        components:{GetUser},
+        data() {
+            return {
+                name:['zs','ls','ww','ml'],
+            }
+        },
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<h4 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h4><pre><code class="javascript">&lt;template&gt;
+    &lt;div&gt;
+        &lt;slot name="first"&gt;&lt;/slot&gt;
+        &lt;slot name="cecond"&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        name:'GetUser',
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div&gt;
+        &lt;GetUser&gt;
+            &lt;ul slot="first"&gt;
+                &lt;li v-for="(people,index) in name" :key="index"&gt;{{people}}&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div slot="cecond"&gt;
+                &lt;a href="#"&gt;小明&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/GetUser&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import GetUser from './components/GetUser'
+    export default {
+        name:'App',
+        components:{GetUser},
+        data() {
+            return {
+                name:['张三','李四','王五','马六'],
+            }
+        },
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<h4 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h4><p>数据在子组件中，但是自己不能决定结构，需要将数据传递给父组件，父组件决定结构。</p>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div&gt;
+        &lt;slot :people="people"&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        name:'GetUser',
+        data() {
+            return {
+                people:['张三','李四','王五','马六'],
+            }
+        },
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<pre><code class="javascript">&lt;template&gt;
+    &lt;div&gt;
+        &lt;GetUser&gt;
+            &lt;template scope="man"&gt;
+                &lt;ul&gt;
+                    &lt;li v-for="(user,index) in man.people" :key="index"&gt;{{user}}&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/template&gt;
+        &lt;/GetUser&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import GetUser from './components/GetUser'
+    export default {
+        name:'App',
+        components:{GetUser},
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/" title="Vuex组件间通信"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Vuex组件间通信</span></a><a class="button is-default" href="/2022/07/23/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/" title="Vue组件间通信"><span class="has-text-weight-semibold">Next: Vue组件间通信</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Aucanon/Aucanon.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Aucanon"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><a title="rss" target="_blank" rel="noopener nofollow" href="/atom.xml"><i class="iconfont icon-rss"></i></a><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Aucanon 2022</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p class="is-flex is-justify-content-center"></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/Aucanon/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
