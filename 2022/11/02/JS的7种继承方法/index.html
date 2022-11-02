@@ -1,0 +1,203 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>Js的7种继承方法</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/head.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="﻿
+原型式继承原型式继承的object方法本质上是对参数对象的一个浅复制。ECMAScript 5通过增加Object.create()方法将原型式继承的概念规范化了。这个方法接收两个参数：作为新对象原型的对象，以及给新对象定义额外属性的对象（第二个可选）。在只有一个参数时，Object.create()与这里的函数A方法效果相同。
+    function object(o){
+        function F(){};
+        F.prototype = o;
+        return new F();
+      }
+    var person = {
+        name:&quot;zs&quot;,
+        friends:[&quot;ls&quot;,&quot;ww&quot;]
+      };
+    var pe.."><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Js的7种继承方法</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-text">原型式继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF"><span class="toc-text">原型链继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%9F%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%A7%E6%89%BF"><span class="toc-text">借用构造函数继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF"><span class="toc-text">组合继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-text">寄生式继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%84%E7%94%9F%E7%BB%84%E5%90%88%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-text">寄生组合式继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6-Class"><span class="toc-text">ES6 Class</span></a></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/JavaScript"><i class="tag post-item-tag">JavaScript</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Js的7种继承方法</h1><time class="has-text-grey" datetime="2022-11-01T16:00:00.000Z">2022-11-02</time><article class="mt-2 post-content"><p>﻿</p>
+<h2 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h2><p>原型式继承的object方法本质上是对参数对象的一个浅复制。<br>ECMAScript 5通过增加Object.create()方法将原型式继承的概念规范化了。这个方法接收两个参数：作为新对象原型的对象，以及给新对象定义额外属性的对象（第二个可选）。在只有一个参数时，Object.create()与这里的函数A方法效果相同。</p>
+<pre><code class="javascript">    function object(o){
+        function F(){};
+        F.prototype = o;
+        return new F();
+      }
+    var person = {
+        name:"zs",
+        friends:["ls","ww"]
+      };
+    var person1 = object(person);
+    person1.name = "xm";
+    person1.friends.push("xz");
+  
+    var person2 = object(person);
+    person2.name = "ll";
+    person2.friends.push("lx");
+    console.log("person1:" + person1.name);
+    console.log("person2:" + person2.name)
+    console.log("person1 friends:" + person1.friends);
+    console.log("person2 friends:" + person2.friends);
+    console.log("all friends:" + person.friends);
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/5eae36d17c9440ccb25b40246e0dfc5c.png" alt="在这里插入图片描述"></p>
+<p>优点：不需要单独创建构造函数。</p>
+<p>缺点：子类创建实例时不能向父类传递参数，属性中包含的引用值始终会在相关对象间共享。</p>
+<h2 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h2><p>将父类的实例作为子类的原型</p>
+<pre><code class="javascript">    // 人类类型
+    function Person(name,age,sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+    }
+    // 学生类型
+    function Student(score) {      
+      this.score = score;
+    }
+    // 老师类型
+    function Teacher(salary) {
+      this.salary = salary;
+    }
+    // 原型对象，可以将自己的属性和方法继承给将来的实例对象使用
+    Student.prototype = new Person("zs",18,"男");
+    Student.prototype.constructor = Student;
+    // 生成一个实例
+    var s1 = new Student(89);
+    var s2 = new Student(100);
+    console.dir(s1);
+    console.dir(s2); 
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/9e2e6dff5c434bcfa7d838107251c663.png" alt="在这里插入图片描述"></p>
+<p>优点：写法简单容易理解。</p>
+<p>缺点：父类的引用属性会被子类实例共享，子类创建实例时不能向父类传递参数。</p>
+<h2 id="借用构造函数继承"><a href="#借用构造函数继承" class="headerlink" title="借用构造函数继承"></a>借用构造函数继承</h2><p>使用call()或apply()方法将父类对象的构造函数绑定在子对象上。</p>
+<pre><code class="javascript">    // 人类类型
+    function Person(name,age,sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+    }
+    // 学生类型
+    function Student(name,age,sex,score) {
+      // 直接对父类型的构造函数进行一个普通调用
+      // Person 普通调用过程中，内部的 this 指向的是 window
+      // 可以通过 call 方法更改Person 内部的 this
+      Person.call(this,name,age,sex); 
+      this.score = score;
+    }
+    // 老师类型
+    function Teacher(name,age,sex,salary) {
+      Person.call(this,name,age,sex); 
+      this.salary = salary;
+    }
+    // 创建学生的实例对象
+    var s1 = new Student("zs",18,"男",56);
+    var s2 = new Student("ls",19,"男",93);
+    console.dir(s1);
+    console.dir(s2);
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/4f43c35b162b4003bdae535f8e0eb923.png" alt="在这里插入图片描述"></p>
+<p>优点：解决了不能向父类传参的问题。</p>
+<p>缺点：父类的方法子类不可见，不能复用。</p>
+<h2 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h2><p>将原型链和借用构造函数的组合到一块，兼具了二者的优点。</p>
+<pre><code class="javascript">    // 组合继承：属性在构造函数内部继承，方法通过原型继承
+    function Person(name,age) {
+      this.name = name;
+      this.age = age;
+    }
+    Person.prototype.sayHi = function () {
+      console.log("你好");
+    }
+    // 生成一个子类型
+    function Teacher(name,age,salary) {
+      // 继承父类的属性
+      Person.call(this,name,age);
+      this.salary = salary;
+    }
+    // 方法继承，通过原型对象继承
+    Teacher.prototype = new Person();
+    Teacher.prototype.constructor = Teacher;
+    // 生成老师的一个实例
+    var t1 = new Teacher("ww",28,10000);
+    console.dir(t1);
+    console.log(t1.name);
+    t1.sayHi();
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/a7267c64b35046358304c680e5f639d3.png" alt="在这里插入图片描述"></p>
+<p>优点：解决了原型链继承和借用构造函数继承的影响。</p>
+<p>缺点：无论在什么情况下都会在创建子类原型和子类构造函数内部调用两次父类构造函数</p>
+<h2 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h2><p>寄生式继承：寄生式继承背后的思路类似于寄生构造函数和工厂模式：创建一个实现继承的函数，以某种方式增强对象，然后返回这个对象。</p>
+<pre><code class="javascript">    function object(o){    
+      function F(){}      
+      F.prototype = o      
+      return new F()    
+    }
+    function createAnother(o){
+      var clone = object(o)
+      clone.sayHi = function(){
+        console.log("hello")
+    }
+    return clone
+    }
+    var person = {
+    name: "zs",
+    friends: ["ls", "ww", "xm"]
+    };
+    var p = createAnother(person);
+    p.sayHi()
+</code></pre>
+<p>优点：写法简单，不需要单独创建构造函数。</p>
+<p>缺点：通过寄生式继承给对象添加函数会导致函数难以重用。</p>
+<h2 id="寄生组合式继承"><a href="#寄生组合式继承" class="headerlink" title="寄生组合式继承"></a>寄生组合式继承</h2><p>寄生组合式继承：通过借用构造函数来继承属性，通过原型链的混成形式来继承方法。本质上，就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。</p>
+<pre><code class="javascript">  function object(o){    
+    function F(){}      
+    F.prototype = o      
+    return new F()    
+  }
+  function inheritPrototype(subType, superType){ 
+    var prototype = object(superType.prototype)
+    prototype.constructor = subType
+    subType.prototype = prototype
+  }
+  function SuperType(name){
+    this.name = name
+    this.colors = ["red", "blue", "green"]
+  }
+  SuperType.prototype.sayName = function(){
+    console.log(this.name)
+  };
+  function SubType(name, age){
+    SuperType.call(this, name)
+    this.age = age
+  }
+  inheritPrototype(SubType, SuperType)
+  SubType.prototype.sayAge = function(){
+    console.log(this.age)
+  }
+</code></pre>
+<p>优点：高效率只调用一次父构造函数，并且因此避免了在子原型上面创建不必要，多余的属性。与此同时，原型链还能保持不变；</p>
+<p>缺点是：代码复杂</p>
+<h2 id="ES6-Class"><a href="#ES6-Class" class="headerlink" title="ES6 Class"></a>ES6 Class</h2><p>本质上，ES6继承是一种语法糖。而ES6先将父类实例对象的属性和方法，加到this上面（所以必须先调用super方法），然后再用子类的构造函数修改this。</p>
+<pre><code class="javascript">    class Person {
+      constructor (name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      sayHi () {
+        console.log("hello")
+      }   
+    }
+    class Student extends Person {
+      constructor (name,age,number) {
+        super(name,age)
+        this.number = number
+      }
+      hello () {
+        super.sayHi()
+      }
+    }
+    const s1 = new Student("zs",18,101)
+    console.log(s1.name);
+    console.log(s1.age);
+    console.log(s1.number);
+    s1.hello();
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/db5774b9a80e4965b1dade36ab90f498.png" alt="在这里插入图片描述"><br>优点：语法简单易懂操作方便。</p>
+<p>缺点：兼容问题，并不是所有浏览器都支持class关键字。</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2022/09/28/Internet/" title="HTTP"><span class="has-text-weight-semibold">Next: HTTP</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Aucanon/Aucanon.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Aucanon"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><a title="rss" target="_blank" rel="noopener nofollow" href="/atom.xml"><i class="iconfont icon-rss"></i></a><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Aucanon 2022</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p class="is-flex is-justify-content-center"></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/Aucanon/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
