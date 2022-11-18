@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>webpack5中getOptions没了？</title>
+      <link href="/2022/11/18/webpack5%E4%B8%ADgetOptions%E6%B2%A1%E4%BA%86%EF%BC%9F/"/>
+      <url>/2022/11/18/webpack5%E4%B8%ADgetOptions%E6%B2%A1%E4%BA%86%EF%BC%9F/</url>
+      
+        <content type="html"><![CDATA[<p>﻿<br>在做一个webpack的demo的时候创建一个自定义的<code>loader</code>,对loader进行配置的时候设置了<code>size:20</code>，看的教程以及别的教程的博客都是用的<code>getOptions</code>方法来获取options的配置项。</p><pre><code class="javascript">{   test:/\.md$/i,    // use:'./loader/markdown-loader'    use:[        'html-loader',        //marked将md转换为html        // './loader/markdown-loader'        {            loader:'./loader/markdown-loader',            options:{                size:20            }        }    ]}</code></pre><pre><code class="javascript">const loaderUtils = require('loader-utils')module.exports = function(source) {    //获取loader配置项    const options = loaderUtils.getOptions(this)    console.log('ooooo' + options);    const html = marked.parse(source)    return html}</code></pre><p>但是现在使用这个方法进行打包的时候就会报没有getOptions方法的错误。</p><p><img src="https://img-blog.csdnimg.cn/e2d91fdb0dd74ad5b6581d1489da1dd9.png" alt="在这里插入图片描述"><br>在官方文档中方法好像只剩下了</p><p><img src="https://img-blog.csdnimg.cn/6eaa04d300b04bf08c59060c42fbfd5d.png" alt="请添加图片描述"><br>但是好像没有替换的方法，后来注意到方法 interpolateName 的参数中有一个<code>query</code>的参数然后就直接拿来试了一下。<br><img src="https://img-blog.csdnimg.cn/8c59441d0cb34082b4795ea4c1bf7c32.png" alt="在这里插入图片描述"></p><pre><code class="javascript">module.exports = function(source) {    //获取loader配置项    // const options = this.query    console.log('ooooo' + this.query.size);    console.log('123'+source);    const html = marked.parse(source)    return html}</code></pre><p>确实能够输出配置的 <code>size:20</code></p><p><img src="https://img-blog.csdnimg.cn/e310542a78ed4e6f8f5eab3029aebb0a.png" alt="在这里插入图片描述"><br>虽然不知道是不是正解，但是目前就是好像可以拿到配置的options了。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 项目构建 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>自动化构建工具Gulp</title>
       <link href="/2022/11/11/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7Gulp/"/>
       <url>/2022/11/11/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7Gulp/</url>
