@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>状态码422</title>
+      <link href="/2023/06/29/%E7%8A%B6%E6%80%81%E7%A0%81422/"/>
+      <url>/2023/06/29/%E7%8A%B6%E6%80%81%E7%A0%81422/</url>
+      
+        <content type="html"><![CDATA[<p>在接口文档里面测试的时候就是不成功的并且状态码是422。正常去百度 结果大概意思就是传参不对。就一直认为自己的传参方式不对吗？还是少了参数呢？<br><img src="https://img-blog.csdnimg.cn/cec2dc06568b4ef3b96c21c1d9dd2343.png" alt="在这里插入图片描述"><br>从文档里面看参数应该只有 name  是 required 所以</p><pre><code class="javascript">{  auto_init: true,  default_branch: "",  description: "456",  gitignores: "",  issue_labels: "",  license: "",  name: "123",  private: true,  readme: "",  template: true,  trust_model: ""}</code></pre><p>这样写应该也是正常的 但是<br><img src="https://img-blog.csdnimg.cn/c639c5098a7c40b1b05fb3c98fce7503.png" alt="在这里插入图片描述"></p><pre><code class="javascript">const submitForm = async (formEl) =&gt; {  if (!formEl) return  await formEl.validate((valid, fields) =&gt; {    if (valid) {      createDataSet(formData.body).then((res) =&gt; {      ElMessage.success("创建成功")      formEl.resetFields()      console.log(res);            }, (err) =&gt; {        formEl.resetFields()      })    } else {      console.log('error submit!', fields)    }  })}</code></pre><p><img src="https://img-blog.csdnimg.cn/6962d51a4746429bbe95f7d547280e79.png" alt="在这里插入图片描述"></p><p>结果：</p><p>  最后是后端说有参数有问题，不是前端的问题。把参数先留下 <code>name</code> 和 <code>description</code> 就能用了。</p><p>  所以  还好不是我的问题。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> http </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>剑指 Offer 10- I. 斐波那契数列</title>
       <link href="/2023/02/23/%E5%89%91%E6%8C%87%20Offer%2010-%20I.%20%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/"/>
       <url>/2023/02/23/%E5%89%91%E6%8C%87%20Offer%2010-%20I.%20%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/</url>
