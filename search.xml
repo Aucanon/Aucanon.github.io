@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>JS数据类型面试常遇到的坑</title>
+      <link href="/2023/07/10/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9D%A2%E8%AF%95%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"/>
+      <url>/2023/07/10/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9D%A2%E8%AF%95%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
+      
+        <content type="html"><![CDATA[<h3 id="数据类型概念"><a href="#数据类型概念" class="headerlink" title="数据类型概念"></a>数据类型概念</h3><p>   都知道 JavaScript 的分为基本数据类型（undefined、Null、Number、String、Boolean、Symbol、Bigint）和引用数据类型（Object[Array、RegExp、Date、Math、Function···]）<br>其中基本数据类型存放在栈中，被引用或者拷贝时会创建一个完全相等的变量。<br>引用数据类型存放在堆中，存放的是地址，多个引用指向同一个地址。<br>关于多个引用指向同一个地址，就会引发以下问题：</p><pre><code class="javascript">let a = {  name: 'lee',  age: 18}let b = a;console.log(a.name);  //第一个consoleb.name = 'son';console.log(a.name);  //第二个consoleconsole.log(b.name);  //第三个console</code></pre><p>其中第一个 console 输出打印的是 ‘lee’ 这是正常的，<br>但是在代码执行了 b.name = ‘son’ 后 对 a 和 b 的输出打印结果都变成了 ‘son’<br>这就是二者存放的是指向的同一地址，一个发生了改变另一个也随之改变。</p><pre><code class="javascript">let a = {  name: 'Julia',  age: 20}function change(o) {  o.age = 24;  o = {    name: 'Kath',    age: 30  }  return o;}let b = change(a);     // 注意这里没有new，后面new相关会有专门文章讲解console.log(b.age);    // 第一个consoleconsole.log(a.age);    // 第二个console</code></pre><p>正常来讲我就会认为第一个输出为：30 并且 b 的结果是 name: ‘Kath’, age: 30<br>第二个为 24 a 的结果是 name: ‘Julia’, age: 24<br>因为 function 和 return 所返回的东西是不一样的<br>函数传参进来的 o ，传递的是对象在堆中的内存地址值，通过 o.age = 24 改变了 a 对象的 age 属性。 return o 把参数 o 的地址重新返回了，将{name: ‘Kath’, age: 30} 存入其中，最后返回的 b 的值就变成了 {name: ‘Kath’, age: 30}。 如果去掉 return o ， b 就会返回undefined。</p><h3 id="数据类型检测"><a href="#数据类型检测" class="headerlink" title="数据类型检测"></a>数据类型检测</h3><h5 id="type-of"><a href="#type-of" class="headerlink" title="type of"></a>type of</h5><pre><code class="javascript">typeof 1 // 'number'typeof '1' // 'string'typeof undefined // 'undefined'typeof true // 'boolean'typeof Symbol() // 'symbol'typeof null // 'object'typeof [] // 'object'typeof {} // 'object'typeof console // 'object'typeof console.log // 'function'</code></pre><p>null 是经常会考到的 ， type of null 的结果是 Object ，null 最初是用来设置初始值为空对象的好像，所以他是一个 Object。<br>还有在所有的引用数据类型中 只有 function 在使用 type of 进行判断是会返回 function 其他均为 Object。</p><h5 id="instantof"><a href="#instantof" class="headerlink" title="instantof"></a>instantof</h5><p>当 new 一个对象的时候，这个对象会继承他原型链上的对象，instantof 就是通过判断当前对象是否为构造函数所生成的对象来判断数据类型。</p><pre><code class="javascript">let Car = function() {}let benz = new Car()benz instanceof Car // truelet car = new String('Mercedes Benz')car instanceof String // truelet str = 'aaavvvsss'str instanceof String // false</code></pre><p>手写实现简单 instantof 的实现：</p><pre><code class="javascript">function myInstanceof(obj, target) {  // 首先通过 typeof 进行判断是否为基本数据类型，如果是直接返回 flase  if (typeof obj !== 'object' &amp;&amp; obj !== null) return false  // getPrototypeOf 方法是 Object 对象自带的 API，能够拿到参数的原型对象  let temp = Object.getPrototypeOf(obj)  while (true) {    if (temp === null) return null    // 找到相同的原型对象就返回 true    if (temp === target.prototype) return true  }}console.log(myInstanceof(new Number(123), Number));console.log(myInstanceof(123, Number)); </code></pre><blockquote><p>instanceof 可以准确地判断复杂引用数据类型，但是不能正确判断基本数据类型。<br>而 typeof 也存在弊端，他虽然可以判断基本数据类型（null除外），但在引用数据类型中除了 function 类型以外其他的也无法判断。</p></blockquote><h5 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString()"></a>Object.prototype.toString()</h5><p>toString() 是 Object 的原型方法，调用后返回格式为 <code>[object Xxx]</code>的字符串。其中 <code>Xxx</code> 就是对象的类型。其中对与 Object 对象直接调用 toString() 会返回 [object Object] 而其他的对象就需要通过 .call() 来进行调用。</p><pre><code class="javascript">Object.prototype.toString({})       // "[object Object]"Object.prototype.toString.call({})  // 同上结果，加上call也okObject.prototype.toString.call(1)    // "[object Number]"Object.prototype.toString.call('1')  // "[object String]"Object.prototype.toString.call(true)  // "[object Boolean]"Object.prototype.toString.call(function(){})  // "[object Function]"Object.prototype.toString.call(null)   //"[object Null]"Object.prototype.toString.call(undefined) //"[object Undefined]"Object.prototype.toString.call(/123/g)    //"[object RegExp]"Object.prototype.toString.call(new Date()) //"[object Date]"Object.prototype.toString.call([])       //"[object Array]"Object.prototype.toString.call(document)  //"[object HTMLDocument]"Object.prototype.toString.call(window)   //"[object Window]"</code></pre><blockquote><p>从上面这段代码可以看出，Object.prototype.toString.call() 可以很好地判断引用类型，甚至可以把 document 和 window 都区分开来。</p></blockquote><blockquote><p>但是在写判断条件的时候一定要注意，使用这个方法最后返回统一字符串格式为 “[object Xxx]” ，而这里字符串里面的 “Xxx” ，第一个首字母要大写（注意：使用 typeof 返回的是小写），这里需要多加留意。</p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> http </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>状态码422</title>
       <link href="/2023/06/29/%E7%8A%B6%E6%80%81%E7%A0%81422/"/>
       <url>/2023/06/29/%E7%8A%B6%E6%80%81%E7%A0%81422/</url>
