@@ -1,56 +1,63 @@
 <!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>Aucanon's blog</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/head.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>Archives · All</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/06/02/Vue%E6%A0%B8%E5%BF%83--mixin%E6%B7%B7%E5%85%A5/">Vue核心--mixin混入</a></h2><time class="has-text-grey" datetime="2022-06-01T16:00:00.000Z">2022-06-02</time><p class="is-flex-grow-2 mt-2">﻿&amp;gt;混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本身的选项。
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>Archives · All</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://img-blog.csdnimg.cn/5eae36d17c9440ccb25b40246e0dfc5c.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2022/11/02/JS%E7%9A%847%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E6%B3%95/"><img class="post-cover-img js-img-fadeIn" src="https://img-blog.csdnimg.cn/5eae36d17c9440ccb25b40246e0dfc5c.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/JavaScript"><i class="tag post-item-tag">JavaScript</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/11/02/JS%E7%9A%847%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E6%B3%95/">Js的7种继承方法</a></h2><time class="has-text-grey" datetime="2022-11-01T16:00:00.000Z">2022-11-02</time><p class="is-flex-grow-2 mt-2">﻿
+原型式继承原型式继承的object方法本质上是对参数对象的一个浅复制。ECMAScript 5通过增加Object.create()方法将原型式继承的概念规范化了。这个方法接收两个参数：作为新对象原型的对象，以及给新对象定义额外属性的对象（第二个可选）。在只有一个参数时，Object.create()与这里的函数A方法效果相同。
+    function object(o){
+        function F(){};
+        F.prototype = o;
+        return new F();
+      }
+    var person = {
+        name:&quot;zs&quot;,
+        friends:[&quot;ls&quot;,&quot;ww&quot;]
+      };
+    var pe..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/11/02/JS%E7%9A%847%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E6%B3%95/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://www.cloudflare.com/img/learning/ddos/glossary/hypertext-transfer-protocol-http/http-request-headers.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2022/09/28/Internet/"><img class="post-cover-img js-img-fadeIn" src="https://www.cloudflare.com/img/learning/ddos/glossary/hypertext-transfer-protocol-http/http-request-headers.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Internet"><i class="tag post-item-tag">Internet</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/09/28/Internet/">HTTP</a></h2><time class="has-text-grey" datetime="2022-09-27T16:00:00.000Z">2022-09-28</time><p class="is-flex-grow-2 mt-2">InternetHow does Internet work?​    互联网是网络的支柱，以这种技术为基础使网络成为可能。作为基础，互联网是把电脑互相连接起来的一个巨大的网络。
+What is HTTP?​    超文本传输协议（HTTP）是万维网的基础，用于通过超文本连接加载网页。HTTP是应用程序层协议，旨在在互联网设备之间传输信息，并在网络协议栈的其它层之上运行。HTTP上的经典流涉及客户端计算机向服务器发出请求，然后服务器发送响应消息。
+什么是HTTP请求？​    HTTP请求是Internet通信平台（例如Web浏览器）索取其加载网站所需要信息的方式。
+在Internet上发出的每个HTTP请求都携带一系列编码数据，这些数据带有不同类型的信息。典型的HTTP请求包含：
 
-全局注册一个混入，影响注册之后所有创建的每个 Vue 实例。插件作者可以使用混入，向组件注入自定义的行为。不推荐在应用代码中使用。
+HTTP版本类型
 
-首先要定义一个混合，通常在src内创建一个mixin.js文件在该文件内定义所需要的混入。
-export const mix = {
-    methods: {
-        showName(){
-            alert(this.name)
-        }
-    },
-    mounted() {
-        console.log('hel..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/06/02/Vue%E6%A0%B8%E5%BF%83--mixin%E6%B7%B7%E5%85%A5/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--filter%E8%BF%87%E6%BB%A4%E5%99%A8/">Vue核心--filter过滤器</a></h2><time class="has-text-grey" datetime="2022-05-31T16:00:00.000Z">2022-06-01</time><p class="is-flex-grow-2 mt-2">Vue.js 允许你自定义过滤器，可被用于一些常见的文本格式化。过滤器可以用在两个地方：双花括号插值和 v-bind 表达式 (后者从 2.1.0+ 开始支持)。过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符号|指示
+U..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/09/28/Internet/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/24/Vue%20Router/">Vue Router</a></h2><time class="has-text-grey" datetime="2022-07-23T16:00:00.000Z">2022-07-24</time><p class="is-flex-grow-2 mt-2">前后端路由路由就是一个key-value的映射关系。（路径-component/function）
+前端路由前端路由的value即component，不同的路径展示不同的组件。vue-router专门用来实现SPA应用。
 
-功能：对要显示的数据进行特定格式化后再显示。
+SPA应用：单页面WEB应用，导航连接的改变不会刷新整个页面，指挥更新局部的页面。并且数据需要通过ajax请求获得。
 
+后端路由value对应function，根据根据请求路径匹配相应的函数处理响应请求。
+基本使用路由组件
 
-过滤器也可以接收额外参数、多个过滤器也可以串联。
+路由组件通常放在项目目录pages或者views中，并且通过路由使用相应的组件。
 
+非路由组件
 
-注意：并没有改变原本的数据, 是产生新的对应的数据。
+非路由组件通常放在项目目录components中，并且通过对应标签使用
 
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html&amp;gt;
-    &amp;lt;head&amp;gt;
-        &amp;lt;meta charset=&quot;UTF-8&quot; /&amp;gt;
-        &amp;lt;title&amp;gt;过滤器&amp;lt;/title&amp;gt;
-        &amp;lt;script type=&quot;te..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--filter%E8%BF%87%E6%BB%A4%E5%99%A8/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://img-blog.csdnimg.cn/25b04662b91747ad8231c5a2181f62b9.png#pic_center" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"><img class="post-cover-img js-img-fadeIn" src="https://img-blog.csdnimg.cn/25b04662b91747ad8231c5a2181f62b9.png#pic_center" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">Vue核心--生命周期</a></h2><time class="has-text-grey" datetime="2022-05-31T16:00:00.000Z">2022-06-01</time><p class="is-flex-grow-2 mt-2">﻿&amp;gt;每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。
+vue-router使用:
 
-所有生命周期钩子的 this 上下文将自动绑定至实例中，因此你可以访问 data、computed 和 methods。这意味着你不应该使用箭头函数来定义一个生命周期方法 (例如 created: () =&amp;gt; this.fetchTodos())。因为箭头函数绑定了父级上下文，所以 this 不会指向预期的组件实例，并且this.fetchTodos 将会是 undefined。
+下载vue-router： npm i vue-router
+引..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/24/Vue%20Router/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://img-blog.csdnimg.cn/892e8370113c4e11b4de93f920052335.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/"><img class="post-cover-img js-img-fadeIn" src="https://img-blog.csdnimg.cn/892e8370113c4e11b4de93f920052335.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/">Vuex组件间通信</a></h2><time class="has-text-grey" datetime="2022-07-22T16:00:00.000Z">2022-07-23</time><p class="is-flex-grow-2 mt-2">VuexVuex 是一个专为 Vue.js 应用程序开发的状态管理模式 + 库。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
 
-最开始我们应该是要通过new创建一个Vue的实例化对象。生命周期钩子：..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E3%80%81%E7%9B%91%E4%BA%8B%E5%B1%9E%E6%80%A7/">Vue核心--计算属性、监事属性</a></h2><time class="has-text-grey" datetime="2022-05-31T16:00:00.000Z">2022-06-01</time><p class="is-flex-grow-2 mt-2">计算属性computed
-定义：要用的属性不存在，要通过已有的属性计算得来(data)。
-原理：底层借助Object.defineProperty方法提供的getter和setter。
-get函数初次读取时执行一次、当依赖的函数改变再次调用。
-与methods相比，内部有缓存机制（复用）效率更高，调试方便。
-计算属性最终会出现在vm上，直接读取使用即可。
+状态，驱动应用的数据源；
+
+视图，以声明方式将状态映射到视图；
+
+操作，响应在视图上的用户输入导致的状态变化。但是，当我们的应用遇到多个组件共享状态时，单向数据流的简洁性很容易被破坏：
+
+多个视图依赖于同一状态。
+
+来自不同视图的行为需要变更同一状态。
 
 
+Vuex可以适用于多个组件之间共享数据
+安装Vuex
+npm install vuex@next --save
 
-
-如果计算属性要被修改，必须写set函数去响应修改，且set中要引起计算时依赖的数据发生改变。
-
-
-计算属性依赖data中的数据时，data中它所依赖的数据变化时，他也跟着变化
-
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html&amp;gt;
-    &amp;lt;head&amp;gt;
-        &amp;lt;meta charset=&quot;UTF-8&quot; /..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/06/01/Vue%E6%A0%B8%E5%BF%83--%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E3%80%81%E7%9B%91%E4%BA%8B%E5%B1%9E%E6%80%A7/">Read more</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><a class="extend prev" rel="prev" href="/archives/page/4/"><i class="iconfont icon-prev has-text-grey"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/6/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">1</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+搭建Vuex环境：创建文件src/store/inde.js
+//引入Vue核心库
+import Vue from 'vue'
+//引入Vuex
+import Vuex..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2022/07/23/Vuex%E7%BB%84%E5%BB%BA%E9%97%B4%E9%80%9A%E4%BF%A1/">Read more</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><a class="extend prev" rel="prev" href="/archives/page/4/"><i class="iconfont icon-prev has-text-grey"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="extend next" rel="next" href="/archives/page/6/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">1</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')
