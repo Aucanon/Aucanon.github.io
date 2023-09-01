@@ -1,0 +1,205 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>vue3+element下拉多选框组件</title><meta name="description" content="May the Force be with you"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/head.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
+之前整的又乱又复杂被人发现了，重新改改 不过使用方法没变
+&amp;lt;!-- 下拉多选 --&amp;gt;
+&amp;lt;template&amp;gt;
+  &amp;lt;div class=&quot;select-checked&quot;&amp;gt;
+    &amp;lt;el-select v-model=&quot;selectedOptions.data&quot; :style=&quot;selectWidth&quot; :class=&quot;{ 'hidden': selectedOptions.data.length &amp;lt; 2 }&quot;
+      multiple placeholder=&quot;请选择&quot; :popper-append-to-body=&quot;false&quot; collapse-tags popper-class=&quot;check-multi&quot;
+      @change=&quot;emit('.."><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Aucanon's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">vue3+element下拉多选框组件</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile is-hidden"></div><div class="column is-9"><header class="my-4"><a href="/tags/vue"><i class="tag post-item-tag">vue</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">vue3+element下拉多选框组件</h1><time class="has-text-grey" datetime="2023-08-21T16:00:00.000Z">2023-08-22</time><article class="mt-2 post-content"><p><img src="https://img-blog.csdnimg.cn/0d706475b0e84b1c9dd7afb6115e46bd.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/59d63137a274497b9b03451368b9657c.png" alt="在这里插入图片描述"></p>
+<p>之前整的又乱又复杂被人发现了，重新改改 不过使用方法没变</p>
+<pre><code class="javascript">&lt;!-- 下拉多选 --&gt;
+&lt;template&gt;
+  &lt;div class="select-checked"&gt;
+    &lt;el-select v-model="selectedOptions.data" :style="selectWidth" :class="{ 'hidden': selectedOptions.data.length &lt; 2 }"
+      multiple placeholder="请选择" :popper-append-to-body="false" collapse-tags popper-class="check-multi"
+      @change="emit('selected', selectedOptions.data)"&gt;
+      &lt;template v-if="selectedOptions.data.length &gt; 1" #prefix&gt;
+        &lt;div class="multi"&gt;(多选) x {{ selectedOptions.data.length }}&lt;/div&gt;
+      &lt;/template&gt;
+      &lt;el-option class="multiple" v-for="item in options" :value="item.value" :label="item.label" :key="item.value"&gt;
+        &lt;input type="checkbox" :value="item.value" v-model="selectedOptions.data" class="my-checkbox item-input"&gt;
+        {{ item.label }}
+      &lt;/el-option&gt;
+      &lt;div class="is-all"&gt;
+        &lt;div @click="handleOptionsAllChange(true)"&gt;全选&lt;/div&gt;
+        &lt;div @click="handleOptionsAllChange(false)"&gt;反选&lt;/div&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+      &lt;/div&gt;
+    &lt;/el-select&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+
+&lt;script setup&gt;
+import { reactive, defineProps } from 'vue'
+
+let props = defineProps({
+  options: {
+    type: Array,
+    required: true
+  },
+  width: {
+    type: Number,
+    default() {
+      return 420
+    }
+  }
+})
+
+let selectedOptions = reactive({ data: [] })
+
+let selectWidth = 'width:' + props.width + 'px'
+
+const emit = defineEmits(['selected']);
+
+const handleOptionsAllChange = (isAll) =&gt; {
+  if (isAll) {
+    selectedOptions.data = []
+    props.options.forEach(item =&gt; {
+      selectedOptions.data.push(item.value)
+    })
+    console.log(selectedOptions.data);
+  } else {
+    let arr = []
+    props.options.forEach((item) =&gt; {
+      if (!selectedOptions.data.includes(item.value)) {
+        arr.push(item.value)
+      }
+    })
+    selectedOptions.data = arr
+  }
+  emit('selected', selectedOptions.data);
+}
+
+&lt;/script&gt;
+
+&lt;style lang="scss"&gt;
+.select-checked {
+  .el-select__tags-text {
+    min-width: 70px;
+  }
+
+  // tag删除图标
+  .el-tag__close,
+  .el-icon-close {
+    display: none;
+  }
+
+  // 标签tag背景
+  .el-tag.el-tag--info {
+    background: transparent;
+    border: 0;
+    display: none;
+  }
+
+  // 第一个显示名称
+
+  .hidden {
+    .el-tag.is-closable.el-tag--default {
+      display: block;
+      line-height: 30px;
+      padding-left: 15px;
+      margin-left: -4px;
+      font-weight: 400;
+      color: #333333;
+    }
+  }
+
+}
+
+.create-new {
+  font-size: 12px;
+  font-weight: 400;
+  color: #3686FF;
+  padding-right: 10px;
+  // text-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+}
+
+.is-all {
+  display: flex;
+  padding-left: 10px;
+
+  div {
+    cursor: pointer;
+    margin: 6px 10px;
+    transition: 0.2s;
+
+    &amp;:hover {
+      opacity: .7;
+    }
+  }
+}
+
+.multi {
+  font-size: 12px;
+  font-weight: 400;
+  color: #333333;
+}
+
+&lt;/style&gt;
+&lt;style lang="scss" scoped&gt;
+.check-multi {
+  .el-select-dropdown__item.selected::after {
+    display: none;
+  }
+
+  .el-select-dropdown__item {
+    display: flex;
+    align-items: center;
+
+    .item-input {
+      margin-right: 5px;
+    }
+  }
+
+  .el-select-dropdown__list {
+    .selected {
+    
+    background: rgba($color: #3686FF, $alpha: 0.1);
+      }
+  }
+  
+}
+&lt;/style&gt;
+</code></pre>
+<p>使用:</p>
+<pre><code class="javascript">&lt;selectMulti :options="options" @selected="selected"&gt;&lt;/selectMulti&gt;
+
+
+let options = [
+  {
+    value: '001',
+    label: '黄金糕',
+    check: false
+  },
+  {
+    value: '002',
+    label: '双皮奶',
+    check: false
+  },
+  {
+    value: '003',
+    label: '蚵仔煎',
+    check: false
+  },
+  {
+    value: '004',
+    label: '龙须面',
+    check: false
+  },
+  {
+    value: '005',
+    label: '北京烤鸭',
+    check: false
+  }
+]
+
+
+const selected = (value) =&gt; {
+  console.log(value);
+}
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2023/09/01/windows10%E9%BB%98%E8%AE%A4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%80%BB%E6%98%AF%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%94%B9%E4%B8%BAEdge%E6%B5%8F%E8%A7%88%E5%99%A8/" title="Windows10默认浏览器总是自动更改为Edge"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Windows10默认浏览器总是自动更改为Edge</span></a><a class="button is-default" href="/2023/08/10/JS%E6%89%81%E5%B9%B3%E5%8C%96%E6%95%B0%E7%BB%84%E7%9A%84%E5%85%AD%E7%A7%8D%E6%96%B9%E6%B3%95/" title="JS扁平化数组的六种方法"><span class="has-text-weight-semibold">Next: JS扁平化数组的六种方法</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Aucanon/Aucanon.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Aucanon"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><a title="rss" target="_blank" rel="noopener nofollow" href="/atom.xml"><i class="iconfont icon-rss"></i></a><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Aucanon 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p class="is-flex is-justify-content-center"></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/Aucanon/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
